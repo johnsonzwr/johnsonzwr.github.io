@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css reset.css">
+</head>
+<style>
+    .first {
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        width: auto;
+        height: auto;
+        background-color: black;
+    }
+
+    .phone {
+        color: white;
+        text-align: center;
+        align-items: center;
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+
+    .phone a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .phone a:hover {
+        color: orange;
+    }
+
+    .icon .small {
+        align-content: center;
+    }
+
+    .icon a img {
+        border-radius: 50%;
+        margin: 5px;
+    }
+
+    /* 接觸到時,無法將圖案背景變色,範圍奇怪 */
+
+    .icon a:hover {
+        border-radius: 60%;
+        background-color: orange;
+        margin-bottom: 4px;
+    }
+
+    .second {
+        position: fixed;
+        display: flex;
+        width: 100vw;
+
+        background-color: white;
+        /* 無法在移動時置頂 */
+
+        align-content: center;
+        justify-content: center
+    }
+
+    .second .menu {
+        margin-left: 60px;
+        margin-right: 60px
+    }
+
+    .second .anilove .minpic {
+        /* background: url(assets/asset\ 0.png) no-repeat; */
+        /* background-size: 60px auto; */
+        margin-top: 5px;
+        margin-bottom: 5px;
+        height: auto;
+        width: auto;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .second span {
+        color: black;
+        font-size: 40px;
+        vertical-align: middle;
+    }
+
+    .second a {
+        text-decoration: none;
+        justify-content: flex-start;
+    }
+
+    .second h1 {
+        display: flex;
+    }
+
+    .menu {
+        font-size: 20px;
+        margin-top: 30px;
+        display: flex;
+
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        margin: 20px;
+        /* padding: 20px; */
+        justify-content: center;
+
+
+    }
+
+    .menu a:hover {
+
+        text-decoration: underline orange solid;
+
+    }
+
+    button a {
+        color: orange;
+
+    }
+
+    /* 無法將整個按鈕變成超連結 */
+    .donate {
+        margin-top: 5px;
+        background-color: white;
+        border: 3px solid orange;
+        color: orange;
+        margin-bottom: 5px;
+    }
+
+    button.donate:hover {
+        background-color: lightblue;
+        transition: 1s;
+    }
+
+    .third {
+        display: flex;
+        background-image: url(assets/asset\ 4.jpeg);
+        background-size: contain;
+        height: 600px;
+    }
+
+    .third div.needhelp {
+        padding-left: 400px;
+        padding-top: 200px;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    span .fline {
+        font-weight: 600px;
+    }
+
+    button.button2 {
+        background-color: orange;
+        border: 1px solid orange;
+        margin-top: 30px;
+        height: 40px;
+        width: 150px;
+    }
+
+    button.button2 a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .button2:hover {
+        background-color: black;
+    }
+
+    .fourth {
+        /* display:table-row; */
+
+        display: flex;
+
+        
+        flex-direction: row;
+        background-image: url(assets/asset\ 1.jpeg);
+        background-repeat: no-repeat;
+        background-position: left;
+        height: 100vh;
+        margin-left: 100px;
+        padding-left: 80px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .fourth .about {
+        width: 30%;
+        margin-right: 300px ;
+        margin-bottom: 20px;
+        
+        
+        word-wrap: normal
+    }
+    .fourth h2{
+        margin-bottom: 20px;
+    }
+
+    .five {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        justify-content: center;
+        background-color: lightgray;
+
+    }
+
+    .five .pic3 {
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        opacity: 1;
+        vertical-align: middle;
+    }
+   .pic3{
+    position: relative;
+   }
+   .txt{
+    color: white;
+    font-size: 30px;
+   }
+   .txt1{
+    color:  white;
+    font-size: 30px;
+   }
+   .txt2{
+    color: white;
+    font-size: 30px;
+   }
+   .pic3 .txt{
+    position: absolute;
+    bottom: 30px;
+    left:12%;
+   }
+   .pic3 .txt1{
+    position: absolute;
+    bottom: 30px;
+    left: 47%;
+   }
+   .pic3 .txt2{
+    position: absolute;
+    bottom: 30px;
+    left: 80%;
+   }
+    .five h1,
+    h2 {
+        margin-top: 40px;
+    }
+    .pic3 a:hover{
+        transition: 0.5s;
+        filter: brightness(0.5);
+    }
+    
+
+</style>
+
+<body>
+    <div class="first">
+        <div class="phone">
+            <img src="https://picsum.photos/10/10/?random=10">
+            Toll-free: <a href="#">(123) 456-7890</a>
+
+        </div>
+        <div>
+            <div class="icon">
+                <a href=""><img src="https://picsum.photos/20/20/?random=6"></a>
+                <a href=""><img src="https://picsum.photos/20/20/?random=7" alt=""></a>
+                <a href=""><img src=" https://picsum.photos/20/20/?random=8" alt=""></a>
+                <a href=""><img src="https://picsum.photos/20/20/?random=11" alt=""></a>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="second">
+        <a href="">
+            <div class="anilove">
+                <div class="minpic"><img src="assets/asset 0.png" alt=""></div>
+                <span>Anilove</span>
+
+
+            </div>
+        </a>
+
+        <div>
+            <nav class="menu">
+                <p><a href="#">Home</a></p>
+                <p><a href="#">About</a></p>
+                <p><a href="#">Events</a></p>
+                <p><a href="">News</a></p>
+                <p><a href="">Contacts</a></p>
+            </nav>
+
+        </div>
+
+
+        <button class="donate">
+            <a href="">DONATE NOW!</a>
+        </button>
+
+
+    </div>
+
+    <div>
+        <div class=" third">
+            <div class="needhelp">
+                <h1><span style="font-size: 40px
+            ;"> Animal Need</span></h1>
+                <h2><br><span style="font-size: 50px  
+            ;color: lightskyblue;"> YOUR HELP!</span></h2>
+                <P><span style="font-size: 20px
+                ;">You can chip in with money & effort</span></P>
+                <button class="button2"><a href="">DONATE NOW!</a></button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="fourth">
+        <div class="about">
+            <h1><span style="font-size: 50px;
+            ">About Us</span> </h1>
+            <h2><span style="color: skyblue;font-size: 25px;">What Makes Us Care About Pets</span> </h2>
+            <p class="pabout">If it wasn’t for our founder’s childhood spent on a ranch in northern Texas, surrounded by
+                domestic animals and pets all the time till she went to college – there might have been no Anilove
+                animal shelter now. So as soon as she graduated with her Veterinary degree 12 years ago, she already
+                knew what she will be doing for a living. <br><br>All in all, with thousands of animals saved off the
+                streets and cared for every year, we hope to encourage much more pet adoptions to happen!</p>
+            <button class="button2"><a href="">LEARN MORE</a></button>
+        </div>
+
+
+
+    </div>
+    <div class="five">
+        <h1><span style="align-items: center;font-size: 60px;">How can You Help</span></h1>
+        <h2><span style="
+        font-size: 30px;color: skyblue;">There Are Countless Ways You Can Join In & Help
+                Us!</h2>
+
+        <div class="pic3">
+            <a class="pic1" href=""><img src="assets/asset 5.jpeg" alt=""></a>
+            <div class="txt"><h2>Volunteer</h2></div>
+
+            <a href=""><img src="assets/asset 6.jpeg" alt=""></a>
+            <div class="txt1"><h2>Adopt</h2></div>
+            <a href=""><img src="assets/asset 7.jpeg" alt=""></a><div class="txt2"><h2>Sponsor</h2></div>
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div></div>
+
+
+
+
+
+
+</body>
+
+</html>
