@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/reset.css">
+    <style>
+        .header {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            justify-content: space-around;
+            flex-direction: row;
+            background-color: black;
+        }
+
+        .tel {
+            display: flex;
+            color: white;
+            width: 20%;
+            align-items: center;
+            padding: 2px;
+
+        }
+
+        .tel img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .tel a {
+            color: white;
+            transition: 0.5s;
+            text-decoration: none;
+        }
+
+        .tel a:hover {
+            color: orange;
+        }
+
+        .icon img {
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            margin: 10px 0px;
+        }
+
+        .icon img:hover {
+            background-color: orange;
+        }
+/* --------------------------------------------------------------------------- */
+        .banner {
+            /* position: fixed; */
+            display: flex;
+            width: 80%;
+            height: 120px;
+            align-items: center;
+            margin: auto;
+            justify-content: space-evenly;
+        }
+
+        .item {
+            padding: 20px;
+            font-size: large;
+        }
+
+        .anilove {
+            font-size: larger;
+            display: flex;
+            align-items: center;
+        }
+
+        .banner h1 {
+            font-size: 50px;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .nowdonate {
+            border: 3px orange solid;
+            color: orange;
+            padding: 20px;
+            transition: 0.5s;
+        }
+
+        .nowdonate:hover {
+            background-color: skyblue;
+            border-color: skyblue;
+            color: white;
+        }
+
+        .item:hover {
+            text-decoration: underline orange 3px;
+        }
+
+        .content {
+
+            display: flex;
+            flex-direction: column;
+            height: 550px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url(assets/asset\ 4.jpeg)
+        }
+
+        .helppart {
+
+
+            margin: 15%;
+
+            padding: 40px;
+
+
+
+        }
+
+        a.bigbutton {
+
+
+            padding: 15px;
+            border: px orange solid;
+            color: white;
+            background-color: orange;
+
+        }
+
+        .bigbutton:hover {
+            background-color: black;
+            border: black;
+        }
+
+        .about {
+            display: flex;
+            flex-direction: row-reverse;
+
+            align-items: center;
+
+        }
+
+        .about p {
+            padding-top: 20px;
+            flex-wrap: nowrap;
+        }
+
+
+        /* --------------------------------------------------------------------- */
+
+        .wrap {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            flex-direction: column;
+            background-color: lightgray;
+            padding: 0px;
+        }
+
+        .title {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cardlist {
+
+            display: flex;
+            justify-content: space-around;
+
+            height: 300px;
+
+            text-align: center;
+            color: white;
+
+
+        }
+
+        .cardlist p {
+            padding-top: 250px;
+            font-size: x-large;
+        }
+
+
+        .cat {
+
+            background-image: url(assets/asset\ 5.jpeg);
+            background-size: cover;
+            width: 20%;
+
+        }
+
+        .girl {
+            background-image: url(assets/asset\ 6.jpeg);
+            background-size: cover;
+            width: 20%;
+        }
+
+        .woman {
+            background-image: url(assets/asset\ 7.jpeg);
+            background-size: cover;
+            width: 20%;
+        }
+
+        .cardlist :hover {
+            
+            transition: 0.5s;
+            filter: brightness(0.5);
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="tel">
+            <img src="icon/tel.png" alt="電話">
+            <h1>Toll-free: </h1>
+            <a href="#"> (123) 456 - 7890</a>
+        </div>
+        <div class="icon">
+            <a href=""><img src="icon/fb.png" alt="臉書"></a>
+            <a href=""><img src="icon/twitter.png" alt="推特"></a>
+            <a href=""><img src="icon/ig.png" alt="Instagram"></a>
+            <a href=""><img src="icon/in.png" alt="in"></a>
+        </div>
+    </div>
+
+
+    <div class="banner">
+        <div class="anilove">
+            <img src="assets/asset 0.png" alt="標誌">
+            <h1>
+                Anilove </h1>
+        </div>
+        <nav class="menu">
+            <ul>
+                <a class="item" href="">Home</a>
+                <a class="item" href="">About</a>
+                <a class="item" href="">Events</a>
+                <a class="item" href="">News</a>
+                <a class="item" href="">Contacts</a>
+            </ul>
+
+        </nav>
+        <a class="nowdonate" href="">DONATE NOW!</a>
+    </div>
+
+    <div class="content">
+
+
+        <div class="helppart">
+            <h1 style="font-size: xx-large;"> Animasl Need</h1>
+            <h2 style="font-size: 60px;color: skyblue;">YOUR Help!</h2>
+            <P>You can chip in with money & effort!</P><br><br>
+            <a class="bigbutton" href="#">DONATE NOW!</a>
+        </div>
+
+    </div>
+
+
+
+    <div class="about">
+        <div>
+            <h1 style="font-size: xx-large;">About Us</h1>
+            <h2 style="font-size: x-large;color: skyblue;">What Makes Us Care About Pets?</h2>
+            <P>If it wasn’t for our founder’s childhood spent on a ranch in northern Texas, surrounded by domestic
+                animals and pets all the time till she went to college – there might have been no Anilove animal shelter
+                now. So as soon as she graduated with her Veterinary degree 12 years ago, she already knew what she will
+                be doing for a living.</P>
+            <p>All in all, with thousands of animals saved off the streets and cared for every year, we hope to
+                encourage much more pet adoptions to happen!</p><br><br><br><br>
+            <a class="bigbutton" href="#">LEARN MORE!</a>
+        </div>
+        <div class="image"><img src="assets/asset 1.jpeg" alt=""></div>
+    </div>
+
+
+    </div>
+
+    <div class="wrap">
+        <div class="title">
+
+            <h1 style="font-size: xx-large;"> How You Can Help</h1>
+            <h2 style="font-size: x-large;color: skyblue;">There Are Countless Ways You Can Join In & Help Us!</h2>
+        </div>
+
+        <div class="cardlist">
+
+            <div class="cat">
+                <p>Volunteer</p>
+
+            </div>
+            <div class="girl">
+                <p>Adopt</p>
+
+            </div>
+            <div class="woman">
+                <p>Sponsor</p>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
