@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/reset.css">
+    <style>
+        .header{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: black;
+            color: white;
+        }
+        .tel{
+            margin: 15px 0;
+        }
+        .header img{
+            height: 20px;
+            vertical-align: middle;
+        }
+        .tel a{
+            text-decoration: none;
+            color: white;
+            transition: .5s;
+        }
+        .icon img{
+            height: 20px;
+            background-color: white;
+            padding: 1px;
+            border-radius: 50%;
+            margin: 15px 0;
+            transition: .5s;
+        }
+        .tel a:hover{
+            color: orange;
+        }
+        .icon img:hover{
+            background-color: orange;
+        }
+        /* -------------------------------------------- */
+        .banner{
+            width: 100%;
+            display: flex;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+        }
+        ul{
+            display: flex;
+            font-size: large;
+            margin: 0 100px 0 50px;
+            width: fit-content;
+        }
+        .anilove a{
+            display: flex;
+            margin: 10px 0;
+            text-decoration: none;
+            align-items: center;
+        }
+        .anilove h2{
+            font-size: xx-large;
+            margin-left: 5px;
+        }
+        .menu a{
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+        }
+        .menu a:hover{
+            border-bottom: 2px solid orange;
+            /* text-decoration: 2px underline orange; */
+        }
+        .btn-white{
+            text-decoration: none;
+            border: 2px solid orange;
+            padding: 15px;
+            color: orange;
+            transition: .8s;
+        }
+        .btn-white:hover{
+            background-color: skyblue;
+            color: white;
+            border: orange;
+        }
+        /* -------------------------------------------------------- */
+        .body{
+            padding-top: 550px ;
+            background-image: url(assets/asset\ 4.jpeg);
+            background-size:cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .body .text{
+            position: absolute;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 200px 300px;
+            line-height: 1.2;
+        }
+        .text h2{
+            font-size: 40px;
+            font-weight: bolder;
+        }
+        .text span{
+            display: block;
+            color: skyblue;
+            font-weight: bold;
+            font-size: 60px;
+        }
+        .btn-orange{
+            text-decoration: none;
+            background-color: orange;
+            border: 1px solid orange;
+            display:inline-block;
+            margin-top: 20px;
+            padding: 15px;
+           color: white;
+           transition: .5s;
+        }
+        .btn-orange:hover{
+            background-color: black;
+            border: orange;
+        }
+        
+        .body-aboutus{
+            display: flex;
+            flex-direction: row-reverse;
+            
+        }
+        .body-aboutus .text{
+            padding-top: 150px;
+            padding-right: 300px;
+            line-height: 1.5;
+        }
+        .text p{
+            margin-top: 10px;
+        }
+        h2 .thin{
+            font-size: 30px;
+            font-weight: 500;
+        }
+        .picture img{
+            height: 600px;
+            padding-left: 100px;
+        }
+        /* -------------------------------------------------------- */
+        .foot {
+            padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            background-color: lightgray;
+            position: relative;
+            line-height: 1.5;
+        }
+        .cardlist{
+            display: flex;
+            flex-direction: row;
+            margin: auto;
+            padding-top: 30px;
+            padding-bottom: 50px;
+            gap:  20px;
+        }
+        .card{
+            width: 300px;
+            height: 400px;
+            color: white;
+            padding: 20px;
+            gap: 20px;
+            background-size: cover;
+            
+        }
+        .card:first-child{
+            background-image: url(assets/asset\ 5.jpeg);
+        } 
+        .card:nth-child(2){
+            background-image: url(assets/asset\ 6.jpeg);
+        }  
+        .card:nth-child(3){
+            background-image: url(assets/asset\ 7.jpeg);
+        }
+        .cardlist p{
+            
+            font-size: xx-large;
+            padding-top: 350px;
+           
+        }
+        .card:hover {
+            transition: 0.5s;
+            filter: brightness(.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="tel"> 
+            <p> 
+                <img src="./icon/tel.png" alt="電話標誌"> Toll-free: <a href="#">(123)456-7890</a>
+            </p>
+        </div>
+        <div class="icon">
+            <img src="./icon/twitter.png" alt="推特">
+            <img src="./icon/fb.png" alt="臉書">
+            <img src="./icon/ig.png" alt="IG">
+            <img src="./icon/in.png" alt="IN">
+        </div>
+    </div>
+    <div class="banner">
+        <div class="anilove">
+            <a href="">
+                <img src="assets/asset 0.png" alt="anilove"><h2>Anilove</h2>
+            </a>
+        </div>
+            <nav class="menu">
+                <ul>
+                    <a href="">Home</a>
+                    <a href="">About</a>
+                    <a href="">Events</a>
+                    <a href="">News</a>
+                    <a href="">Contacts</a>
+                </ul>
+            </nav>
+        <a href="" class="btn-white">DONATE NOW!</a>
+    </div>
+    <div class="body">
+        <div class="text">
+            <h2>Animals Need <span>YOUR Help!</span></h2>
+            <p>You cna chip in with money & effort!</p>
+            <div>
+                <a href="" class="btn-orange">DONATE NOW!</a>
+            </div>
+        </div>
+    </div>
+    <div class="body-aboutus">
+        <div class="text">
+            <h2>About Us <span class="thin">What Makes Us Care About Pets?</span></h2>
+            <p>If it wasn’t for our founder’s childhood spent on a ranch in northern Texas, surrounded by domestic animals and pets all the time till she went to college – there might have been no Anilove animal shelter now. So as soon as she graduated with her Veterinary degree 12 years ago, she already knew what she will be doing for a living.</p>
+            <p>All in all, with thousands of animals saved off the streets and cared for every year, we hope to encourage much more pet adoptions to happen!</p>
+            <div class=>
+                <a href="" class="btn-orange">LEARN MORE</a>
+            </div>
+        </div>
+        <div class="picture">
+            <img src="assets/asset 1.jpeg" alt="">
+        </div> 
+    </div>
+    <div class="foot">
+        <div class="text">
+            <h2>
+                How You Can Help <span class="thin">There Are Countless Ways You Can Join In & Help Us!</span>
+            </h2>
+        </div>
+        <div class="cardlist">
+            <div class="card">
+                <p>Volunteer</p>
+            </div>
+            <div class="card">
+                <p>Adopt</p>
+            </div>
+            <div class="card">
+                <p>Sponsor</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
