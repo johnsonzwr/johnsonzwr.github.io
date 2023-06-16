@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .my-title{
+            color: red;
+            font-size: 20px;
+        }
+        .my-title2{
+            color: aqua;
+            font-size: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>
+        Title
+    </h1>
+    
+     
+    <script>
+        
+        const title = document.querySelector('h1')
+        // title.style.color = 'red'
+        // title.style.fontSize = "100px"
+        // ---------------------------------------------
+        title.classList.add("my-title")
+        title.classList.replace('my-title', 'my-title2')
+        // ------------------------------------------------
+        title.setAttribute("class", 'my-title my-title2')
+
+
+    </script>
+</body>
+</html>

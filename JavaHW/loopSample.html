@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        const objArr = [
+            {id:1, name: "Andy" },
+            {id:2, name: "Andy1" },
+            {id:3, name: "Andy2" },
+            {id:4, name: "Andy3" },
+    ]
+
+    objArr.forEach(function(item){
+        console.log(item)
+    }
+    )
+    // --------------------------------
+    for(let item of objArr){
+        console.log(item)
+    }
+// ------------------------------------
+    for(let item in objArr){
+        console.log(item);
+        
+    }
+
+    for (let i = 0 ; i<objArr.length; i++){
+        console.log(objArr[i])
+    }
+
+
+    </script>
+</body>
+</html>

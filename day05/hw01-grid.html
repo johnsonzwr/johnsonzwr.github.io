@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../grid.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+      .card {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        border: 1px solid black;
+        border-radius: 4px;
+        align-items: center;
+      }
+      .pic {
+        width: 50%;
+      }
+      .pic img {
+        width: 100%;
+        
+        aspect-ratio: 1/1;
+        vertical-align: top;
+      }
+
+      .card .text {
+        width: 50%;
+        box-sizing: border-box;
+        padding: 10px;
+      }
+     
+      @media screen and (min-width: 768px) {
+        .card .text {
+          width: 100%;
+        }
+        .card .pic {
+          width: 100%;
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        .col-xl-12 .card .pic img {
+          aspect-ratio: 3/2;
+        }
+        .col-xl-12 .card .text,
+        .col-xl-6 .card .text {
+          width: 50%;
+        }
+        .col-xl-12 .card .pic,
+        .col-xl-6 .card .pic {
+          width: 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-4 col-lg-3 col-xl-12">
+          <div class="card">
+            <div class="pic">
+              <img src="https://picsum.photos/300/200/?grayscale" />
+            </div>
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Quaeratus perferendis, alias voluptates cumque nisilLorem ipsum
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              v
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 col-xl-4">
+          <div class="card">
+            <div class="pic">
+              <img src="https://picsum.photos/300/200/?grayscale" />
+            </div>
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+              nihil qui accusamus perferendis, alias voluptates cumque nisi
+              dolorum reiciendis beatae odit rem quisquam impedit reprehenderit
+              beatae
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 col-xl-4">
+          <div class="card">
+            <div class="pic">
+              <img src="https://picsum.photos/300/200/?grayscale" />
+            </div>
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+              nihil qui accusamus perferendis, alias voluptates cumque nisi
+              dolorum reiciendis beatae odit rem quisquam impedit reprehenderit
+              officia. Ea obcaecati rem sed?
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 col-xl-4">
+          <div class="card">
+            <div class="pic">
+              <img src="https://picsum.photos/300/200/?grayscale" />
+            </div>
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+              nihil qui accusamus perferendis, alias voluptates cumque nisi
+              dolorum reiciendis beatae odit rem quisquam impedit reprehenderit
+              officia. Ea obcaecati rem sed?
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 col-xl-6">
+          <div class="card">
+            <div class="pic">
+              <img src="https://picsum.photos/300/200/?grayscale" />
+            </div>
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+              nihil qui accusamus perferendis, alias voluptates cumque nisi
+              dolorum reiciendis beatae odit rem quisquam impedit reprehenderit
+              officia. Ea obcaecati rem sed?
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 col-xl-6">
+          <div class="card">
+            <div class="pic">
+              <img src="https://picsum.photos/300/200/?grayscale" />
+            </div>
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+              nihil qui accusamus perferendis, alias voluptates cumque nisi
+              dolorum reiciendis beatae odit rem quisquam impedit reprehenderit
+              officia. Ea obcaecati rem sed?
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col">
+          <div class="card">
+            <div class="pic">
+              <img src="https://picsum.photos/300/200/?grayscale" />
+            </div>
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+              nihil qui accusamus perferendis, alias voluptates cumque nisi
+              dolorum reiciendis beatae odit rem quisquam impedit reprehenderit
+              officia. Ea obcaecati rem sed?
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="pic">
+              <img src="https://picsum.photos/300/200/?grayscale" />
+            </div>
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+              nihil qui accusamus perferendis, alias voluptates cumque nisi
+              dolorum reiciendis beatae odit rem quisquam impedit reprehenderit
+              officia. Ea obcaecati rem sed?
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </body>
+</html>
