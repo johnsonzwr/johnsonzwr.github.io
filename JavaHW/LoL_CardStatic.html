@@ -3435,6 +3435,7 @@
           //   console.log(heroArray);
           //2.清除container
           document.querySelector("#container").innerHTML = "";
+          document.querySelector("#result").innerHTML= "";
         });
 
         btnListHero.addEventListener("click", function () {
@@ -3442,6 +3443,7 @@
             alert("請先建立陣列資料");
             return;
           }
+          document.querySelector("#result").innerHTML= "";
           //alert("以文字迭代英雄人物資料！");
           // let heroList =
           heroArray.forEach((data) => {
@@ -3456,7 +3458,7 @@
             alert("請先建立陣列資料");
             return;
           }
-
+          document.querySelector("#result").innerHTML= "";
           alert("以表格呈現英雄人物資料！");
           let key = Object.keys(obj);
           let values = Object.values(heroArray);
