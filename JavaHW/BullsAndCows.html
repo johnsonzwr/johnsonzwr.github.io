@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <style>
+      .gameBody {
+        margin: auto;
+        width: 300px;
+        text-align: center;
+        background-color: lightblue;
+      }
+      .gameBody input {
+        width: 200px;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .gameBody .hint {
+        margin-top: 10px;
+        color: purple;
+      }
+      .btn-numGroup {
+        width: 200px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .btn-numGroup button {
+        display: block;
+        border-radius: 50%;
+        border: none;
+        background-color: #555;
+        color: white;
+        width: 40px;
+        height: 35px;
+        margin: 12px;
+        text-align: center;
+        transition: 0.3s;
+      }
+      .btn-numGroup button:last-child {
+        margin: auto;
+      }
+
+      .btn-group {
+        width: 100%;
+        display: flex;
+        margin-top: 10px;
+        justify-content: center;
+        gap: 10px;
+      }
+      .btn-group button {
+        transition: 0.3s;
+      }
+      .btn-numGroup > button:hover {
+        background-color: violet;
+      }
+      .btn-group > button:hover {
+        background-color: springgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gameBody">
+      <h1>猜~數字遊戲</h1>
+      <input type="text" placeholder="請輸入數字" class="guess" />
+      <div class="hint"></div>
+      <div class="btn-numGroup">
+        <button class="num">1</button>
+        <button class="num">2</button>
+        <button class="num">3</button>
+        <button class="num">4</button>
+        <button class="num">5</button>
+        <button class="num">6</button>
+        <button class="num">7</button>
+        <button class="num">8</button>
+        <button class="num">9</button>
+        <button class="num">0</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn-guess">猜答案!</button>
+        <button class="btn-answer">偷看答案</button>
+        <button class="btn-reset">重新開始</button>
+      </div>
+    </div>
+
+    <script>
+      // 宣告 DOM
+      const guessInput = document.querySelector(".guess");
+      const hintArea = document.querySelector(".hint");
+      const guessBtn = document.querySelector(".btn-guess");
+      const answerBtn = document.querySelector(".btn-answer");
+      const resetBtn = document.querySelector(".btn-reset");
+
+      guessInput.maxLength = 3;
+      //宣告變數
+      let minNum, maxNum, answerNum, guessNum;
+
+      //按下猜按鈕
+      guessBtn.addEventListener("click", guess);
+
+      //按下看答案按鈕
+      answerBtn.addEventListener("click", function () {
+        alert(answerNum);
+      });
+
+      //從新創造一個新變數
+      resetBtn.addEventListener("click", function () {
+        init();
+      });
+
+      //   window.onload = function () {
+      //     init();
+      //   };
+      window.addEventListener("DOMContentLoaded", function () {
+        init();
+      });
+    //---------------------------------------------------------------------------- 
+      //  輸入數字鍵盤
+      // 將每一個 el 拿出來做迭代
+      document.querySelectorAll(".num").forEach(function (el) {
+        el.addEventListener("click", insertNum);
+      });
+
+      //插入數字的方法,每一個目標事件內的文字
+      function insertNum(event) {
+        //如果輸入數字的長度 大於等於 5 則return使其無法輸入  
+        if (guessInput.value.length >= 3) {
+            return; // 如果輸入框的長度已達到最大長度，停止插入新的數字
+        }
+        guessInput.value += event.target.textContent;
+    }
+    // --------------------------------------------------------------------------------
+      function guess() {
+        // trim()方法去除頭尾空白
+        const value = guessInput.value.trim();
+        //                                  第一個為0
+        if (value === "" || isNaN(value) || value[0] === "0") {
+          alert("請輸入正確的數字");
+          guessInput.value = "";
+          return;
+        }
+
+        guessNum = parseInt(value);
+
+        /**
+         * 當我這個方法的回傳值是 false的時候,直接跳出guess方法
+         */
+        if (!checkNum(guessNum, minNum, maxNum)) {
+          return;
+        }
+
+        if (guessNum === answerNum) {
+          alert(`GG! 答案為 ${guessNum},恭喜!!`);
+          init();
+          return;
+        } else if (guessNum < answerNum) {
+          minNum = guessNum;
+        } else if (guessNum > answerNum) {
+          maxNum = guessNum;
+        }
+        guessInput.value = "";
+        showHint();
+      }
+      //檢查數字是否符合範圍
+      /**
+       * 傳入三個參數 guessNum,minNum,maxNum
+       * 當猜的數字小於 minNum或大於 maxNum時,回傳 false
+       * 反之回傳 true
+       */
+      function checkNum(guessNum, minNum, maxNum) {
+        if (guessNum < minNum || guessNum > maxNum) {
+          showHint();
+          guessInput.value = "";
+          alert("請輸入正確的範圍歐");
+          return false;
+        }
+        return true;
+      }
+
+      function showHint() {
+        hintArea.textContent = `請輸入${minNum}~~${maxNum}內的數字`;
+      }
+      //將產生的變數丟到 answerNum內
+
+      function init() {
+        minNum = 1;
+        maxNum = 100;
+        answerNum = generateAnswer();
+        guessInput.value = "";
+        showHint();
+      }
+
+      //產生隨機亂數
+      function generateAnswer() {
+        return getRandomIntInclusive(minNum, maxNum);
+      }
+
+      function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+        //含最大值，含最小值
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -3448,6 +3448,7 @@
           // let heroList =
           heroArray.forEach((data) => {
             let heroString = document.createElement("div");
+                                 // 轉成JSON文字
             heroString.innerText = JSON.stringify(data);
             result.append(heroString);
           });
@@ -3461,13 +3462,14 @@
           document.querySelector("#result").innerHTML= "";
           alert("以表格呈現英雄人物資料！");
           let key = Object.keys(obj);
+          // let values = Object.values(heroArray);
           let values = Object.values(heroArray);
           thead = document.createElement("thead");
           tbody = document.createElement("tbody");
           table = document.createElement("table");
           createThead(key);
-          createTbody(values);
           console.log(values);
+          createTbody(values);
         });
       };
       function createThead(key) {
@@ -3477,7 +3479,7 @@
           let th = document.createElement("th");
           th.innerText = title;
           th.setAttribute("style", "margin: 20px");
-
+          console.log(title);
           theadTr.append(th);
         });
         //    console.log(theadTr);
@@ -3523,8 +3525,7 @@
         // );
         // thead.setAttribute("style", "gap:30px");
       }
-      // table.append(tbody)
-      // result.append(table)
+      
     </script>
   </body>
 </html>
