@@ -1,0 +1,20 @@
+{
+    "firstname" : "Johnson",
+    "gender" : true,
+    "height" : 180 ,
+    "email" : "s89658881@gamil.con",
+    "city":{
+        "通訊地址":"台北",
+        "戶籍地址":"台北"
+    },
+    "phone":{
+        "市話":"02-29881055",
+        "行動電話":"0958310924"
+
+    },
+
+    "cars":["BMW","AUDI"]
+
+
+
+}
