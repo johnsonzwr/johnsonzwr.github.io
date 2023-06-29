@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <style>
+      * {
+        list-style: none;
+      }
+      .container {
+        width: 400px;
+        height: 450px;
+        padding: 10px;
+        margin: auto;
+        text-align: center;
+        background-color: skyblue;
+        justify-content: center;
+      }
+      .btn-group {
+        gap: 5px;
+        padding: 5px;
+      }
+      #historyList {
+        text-align: start;
+        overflow: auto;
+        max-height: 200px;
+        height: 200px;
+      }
+
+      #historyList li {
+        display: flex;
+        color: white;
+
+        margin: 10px 0;
+        gap: 10px;
+
+        align-items: center;
+      }
+
+      #historyList button {
+        background-color: red;
+      }
+
+      #historyPad {
+        width: 300px;
+        margin: auto;
+
+        background-color: lightslategray;
+        color: wheat;
+      }
+      button {
+        transition: 0.5s;
+      }
+      button:hover {
+        background-color: darkseagreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>1A2B遊戲</h1>
+
+      <div class="btn-group">
+        <button id="start">開始</button>
+        <button id="reset">重新開始</button>
+        <button id="lookAnswer">看答案</button>
+      </div>
+      <div id="historyPad">
+        <h3>答題歷程</h3>
+        <ul id="historyList"></ul>
+      </div>
+      <input
+        type="text"
+        id="guessInput"
+        placeholder="請輸入數字,範圍為0~9"
+        maxlength="4"
+      />
+      <button id="guess">猜</button>
+    </div>
+
+    <script>
+      let guess = document.getElementById("guess");
+      let guessInput = document.getElementById("guessInput");
+      let start = document.getElementById("start");
+      let reset = document.getElementById("reset");
+      let lookAnswer = document.getElementById("lookAnswer");
+      let historyList = document.getElementById("historyList");
+      let answer = "";
+
+      window.onload = function () {
+        reset.disabled = true;
+        lookAnswer.disabled = true;
+        guess.disabled = true;
+        guessInput.disabled = true;
+      };
+      reset.addEventListener("click", resetGame);
+      lookAnswer.addEventListener("click", showAnswer);
+      start.addEventListener("click", gameStart);
+
+      guess.addEventListener("click", handleGuess);
+      guessInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          handleGuess();
+        }
+      });
+
+      function handleGuess() {
+        const value = guessInput.value.trim();
+        let result = guessCompare(answer, value);
+        let resultBtn = document.createElement("button");
+        let valueItem = document.createElement("li");
+        const reNum = new Set(value); //單次輸入數字不能重複
+
+        if (value === "" || isNaN(value) || value.includes(".")) {
+          alert("請輸入正確的數字");
+          guessInput.value = "";
+          return;
+        } else if (value.length != 4) {
+          alert("請輸入長度為4的數字");
+          guessInput.value = "";
+          return;
+        } else if (reNum.size !== value.length) {
+          alert("請勿輸入重複數字");
+          guessInput.value = "";
+          return;
+        }
+
+        if (result === "4A0B") {
+          alert("!!!!恭喜猜對!!!!");
+          resultBtn.style.backgroundColor = "lightgreen";
+
+          lookAnswer.disabled = true;
+          guess.disabled = true;
+        }
+        resultBtn.innerHTML = result;
+        valueItem.innerHTML = "您猜的數字為 " + value;
+
+        valueItem.insertBefore(resultBtn, valueItem.firstChild);
+        historyList.append(valueItem);
+        guessInput.value = "";
+        // 卷軸自動捲到最下面
+        historyList.scrollTop = historyList.scrollHeight;
+      }
+      function guessCompare(answer, guess) {
+        // 全對的數量
+        let a = 0;
+        // 僅有數字對的數量
+        let b = 0;
+
+        for (let i = 0; i < guess.length; i++) {
+          //  看 answer內 有沒有找到 guess[i]的值
+          let index = answer.indexOf(guess[i]);
+          // 如果兩者的值與位置都相同, 則 a計數器 +1
+          if (index === i) {
+            a++;
+          }
+          //  有找到值 但索引的位置不同,則 b計數器 +1
+          else if (index > -1) {
+            b++;
+          }
+        }
+        return a + "A" + b + "B";
+      }
+      function gameStart() {
+        answer = generateAnswer();
+        start.disabled = true;
+        reset.disabled = false;
+        lookAnswer.disabled = false;
+        guess.disabled = false;
+        guessInput.disabled = false;
+        guessInput.focus()
+      }
+
+      //   看答案
+      function showAnswer() {
+        alert(`答案是: ${answer}`);
+      }
+      //  重新遊戲
+      function resetGame() {
+        answer = generateAnswer();
+
+        historyList.innerHTML = "";
+      }
+
+      // 產生隨機數字
+
+      function generateAnswer() {
+        const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        // answer的索引
+        answer = "";
+        for (let i = 0; i < 4; i++) {
+          // number.length = 10 ,會得到小於 10的數字,即 0 ~ 9
+          let randomIdx = Math.floor(Math.random() * numbers.length);
+          answer += numbers[randomIdx];
+          numbers.splice(randomIdx, 1);
+        }
+
+        return answer;
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

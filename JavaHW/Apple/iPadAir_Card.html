@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container" >
+      <div id="picture"></div>
+      <div>
+        <h2>購買 iPad Air</h2>
+        <div class="btn-group-color">
+          <button class="color" id="gray">太空灰色</button>
+          <button class="color" id="blue">藍色</button>
+          <button class="color" id="pink">粉紅色</button>
+          <button class="color" id="purple">紫色</button>
+          <button class="color" id="starlight">星光色</button>
+        </div>
+        <div class="btn-group-storage">
+          <button class="storage" id="64g">64GB</button>
+          <button class="storage" id="256g">256GB</button>
+        </div>
+        <div class="btn-group-network">
+          <button class="net" id="wifi">Wifi</button>
+          <button class="net" id="cellular">Wifi加行動網路</button>
+        </div>
+      </div>
+      <div class="msg"></div>
+    </div>
+    <!-- <button id="btnGetJSON">Request JSON</button> -->
+
+    <!-- <div id="msg" class="row"></div> -->
+
+    <script>
+      const url =
+        "https://raw.githubusercontent.com/johnsonzwr/johnsonzwr.github.io/main/iPadAir_2023";
+
+      let msg = document.querySelector(".msg");
+      let img = document.createElement("img")
+      let chooseColor = ''
+      let chooseStorage = ''
+      let chooseNet = ''
+      
+
+      let ipadArray = [];
+      // 創一個空的 XML
+      let xhr = new XMLHttpRequest();
+      //   let br = document.createElement("br");
+      window.onload=function(){
+        requestIpadJson(url)
+      }
+      
+      function requestIpadJson(uri) {
+        xhr.onload = function () {
+          //ipadArray = JSON.parse(this.responseText);
+          ipadArray = this.response;
+          //console.log(ipadArray);
+          console.log(this);
+        };
+          
+          
+
+        xhr.open("GET", uri);
+        //設定回傳的類型
+        xhr.responseType = "json";
+        xhr.send();
+      }
+
+      
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
