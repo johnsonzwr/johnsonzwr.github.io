@@ -105,19 +105,21 @@
       start.addEventListener("click", gameStart);
 
       guess.addEventListener("click", handleGuess);
+      //對 input設定鍵盤輸入,當按下 Enter時 呼叫 handleGuess 方法
       guessInput.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
           handleGuess();
         }
       });
-
+      // 處理輸入的數字
       function handleGuess() {
+        // 將空格清除, 刪除字符串的頭尾空白
         const value = guessInput.value.trim();
         let result = guessCompare(answer, value);
         let resultBtn = document.createElement("button");
         let valueItem = document.createElement("li");
         const reNum = new Set(value); //單次輸入數字不能重複
-
+        //  Set儲存唯一值
         if (value === "" || isNaN(value) || value.includes(".")) {
           alert("請輸入正確的數字");
           guessInput.value = "";
@@ -138,6 +140,7 @@
 
           lookAnswer.disabled = true;
           guess.disabled = true;
+          guessInput.disabled = true;
         }
         resultBtn.innerHTML = result;
         valueItem.innerHTML = "您猜的數字為 " + value;
@@ -156,16 +159,20 @@
 
         for (let i = 0; i < guess.length; i++) {
           //  看 answer內 有沒有找到 guess[i]的值
+          //  在 guess中 索引為 i 的位置的字元,並返回 在 answer中的索引
+          //  故 兩者的索引如果相同, 代表在同一位置上,則 a的數量 +1
           let index = answer.indexOf(guess[i]);
           // 如果兩者的值與位置都相同, 則 a計數器 +1
           if (index === i) {
             a++;
           }
           //  有找到值 但索引的位置不同,則 b計數器 +1
+          //  當找不到值時 會回傳 -1 此處不做為 -1的處理
           else if (index > -1) {
             b++;
           }
         }
+        // 回傳幾個 A 與幾個 B
         return a + "A" + b + "B";
       }
       function gameStart() {
@@ -199,6 +206,7 @@
           // number.length = 10 ,會得到小於 10的數字,即 0 ~ 9
           let randomIdx = Math.floor(Math.random() * numbers.length);
           answer += numbers[randomIdx];
+          // 將以選擇過的數字, 從陣列中移除
           numbers.splice(randomIdx, 1);
         }
 

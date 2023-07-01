@@ -10,12 +10,38 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+
+    <style>
+      .container{
+        width: 50%;
+        margin: auto;
+      }
+      
+      
+
+      #picture img {
+        width: 100%;
+        vertical-align: top;
+      }
+
+
+
+
+    </style>
   </head>
   <body>
-    <div class="container" >
-      <div id="picture"></div>
-      <div>
-        <h2>購買 iPad Air</h2>
+    <div class="container row"  >
+      <h1>購買 iPad Air</h1>
+      <!-- <div class="btn-group-type">
+        <button id="iPhone"></button>
+        <button id="iPad"></button>
+        <button id="iPad"></button>
+      </div> -->
+      <div id="picture"  class="col-6">
+        <img src="./product image/ipad-air-all.png" alt="">
+      </div>
+      <div class="col-6">
+        
         <div class="btn-group-color">
           <button class="color" id="gray">太空灰色</button>
           <button class="color" id="blue">藍色</button>
@@ -32,11 +58,9 @@
           <button class="net" id="cellular">Wifi加行動網路</button>
         </div>
       </div>
-      <div class="msg"></div>
+      <div class="msg">價格</div>
     </div>
-    <!-- <button id="btnGetJSON">Request JSON</button> -->
-
-    <!-- <div id="msg" class="row"></div> -->
+    
 
     <script>
       const url =

@@ -1,0 +1,147 @@
+{
+    "ipad": {
+        "color": [
+            {
+                "name": "太空灰色",
+                "color": "#6C6C6C",
+                "imgName": "gray.png"
+            },
+            {
+                "name": "藍色",
+                "color": "#0072E3",
+                "imgName": "blue.png"
+            },
+            {
+                "name": "粉紅色",
+                "color": "#FF60AF",
+                "imgName": "pink.png"
+            },
+            {
+                "name": "紫色",
+                "color": "#B15BFF",
+                "imgName": "purple.png"
+            },
+            {
+                "name": "星光色",
+                "color": "#B9B973",
+                "imgName": "starlight.png"
+            }
+        ],
+        "spec": [
+            {
+                "storage": "64GB",
+                "network": "Wi-Fi",
+                "price": "19900"
+            },
+            {
+                "storage": "64GB",
+                "network": "Cellular",
+                "price": "24900"
+            },
+            {
+                "storage": "256GB",
+                "network": "Wi-Fi",
+                "price": "24900"
+            },
+            {
+                "storage": "256GB",
+                "network": "Cellular",
+                "price": "29900"
+            }
+        ]
+    },
+    "iPhone": {
+        "color": [
+            {
+                "name": "藍色",
+                "color": "#0072E3",
+                "imgName": "blue-iphone.png"
+            },
+            {
+                "name": "紫色",
+                "color": "#0072E3",
+                "imgName": "purple-iphone.png"
+            },
+            {
+                "name": "黃色",
+                "color": "#0072E3",
+                "imgName": "yellow-iphone.png"
+            },
+            {
+                "name": "午夜色",
+                "color": "#0072E3",
+                "imgName": "black-iphone.png"
+            },
+            {
+                "name": "星光色",
+                "color": "#0072E3",
+                "imgName": "white-iphone.png"
+            }
+        ],
+        "storage": [
+            {
+                "size": "128GB",
+                "fit": "24900"
+            },
+            {
+                "size": "256GB",
+                " fit": "31400"
+            },
+            {
+                "size": "512GB",
+                " fit": "38400"
+            }
+        ]
+    },
+    "iPadMini": {
+        "color": [
+            {
+                "name": "太空灰色",
+                "color": "#6C6C6C",
+                "imgName": "gray.png"
+            },
+            {
+                "name": "藍色",
+                "color": "#0072E3",
+                "imgName": "blue.png"
+            },
+            {
+                "name": "粉紅色",
+                "color": "#FF60AF",
+                "imgName": "pink.png"
+            },
+            {
+                "name": "紫色",
+                "color": "#B15BFF",
+                "imgName": "purple.png"
+            },
+            {
+                "name": "星光色",
+                "color": "#B9B973",
+                "imgName": "starlight.png"
+            }
+        ],
+        "spec": [
+            {
+                "storage": "64GB",
+                "network": "Wi-Fi",
+                "price": "16900"
+            },
+            {
+                "storage": "64GB",
+                "network": "Cellular",
+                "price": "21900"
+            },
+            {
+                "storage": "256GB",
+                "network": "Wi-Fi",
+                "price": "21900"
+            },
+            {
+                "storage": "256GB",
+                "network": "Cellular",
+                "price": "26900"
+            }
+        ]
+    }
+}
