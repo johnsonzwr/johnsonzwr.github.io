@@ -12,37 +12,47 @@
     />
 
     <style>
-      .container{
-        width: 50%;
+      .container {
         margin: auto;
       }
-      
-      
-
-      #picture img {
-        width: 100%;
-        vertical-align: top;
+      #picture {
+        height: 300px;
+        display: flex;
       }
 
+      #picture img {
+        max-width: 100%;
+        max-height: 100%;
+        vertical-align: top;
+        margin: auto;
+      }
 
-
-
+      .btn-group-color {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .btn-group-color button {
+      }
+      .btn-group-storage {
+        margin-top: 10px;
+      }
+      .btn-group-network {
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
-    <div class="container row"  >
+    <div class="container row">
       <h1>購買 iPad Air</h1>
-      <!-- <div class="btn-group-type">
-        <button id="iPhone"></button>
-        <button id="iPad"></button>
-        <button id="iPad"></button>
-      </div> -->
-      <div id="picture"  class="col-6">
-        <img src="./product image/ipad-air-all.png" alt="">
+
+      <div id="picture" class="col-9">
+        <img id="img" src="./product image/ipad-air-all.png" alt="" />
       </div>
-      <div class="col-6">
-        
+      <div class="selectlist col-3">
         <div class="btn-group-color">
+          <h2>外觀顏色</h2>
+
           <button class="color" id="gray">太空灰色</button>
           <button class="color" id="blue">藍色</button>
           <button class="color" id="pink">粉紅色</button>
@@ -50,54 +60,106 @@
           <button class="color" id="starlight">星光色</button>
         </div>
         <div class="btn-group-storage">
+          <h2>儲存裝置</h2>
           <button class="storage" id="64g">64GB</button>
           <button class="storage" id="256g">256GB</button>
         </div>
         <div class="btn-group-network">
+          <h2>連線能力</h2>
           <button class="net" id="wifi">Wifi</button>
           <button class="net" id="cellular">Wifi加行動網路</button>
         </div>
+
+        <div class="msg"></div>
       </div>
-      <div class="msg">價格</div>
     </div>
-    
 
     <script>
       const url =
-        "https://raw.githubusercontent.com/johnsonzwr/johnsonzwr.github.io/main/iPadAir_2023";
+        "https://raw.githubusercontent.com/johnsonzwr/johnsonzwr.github.io/092bd19c2655bea3e0630fc1b87347fabd579af4/JavaHW/Apple/appleProduct2023.json";
 
       let msg = document.querySelector(".msg");
-      let img = document.createElement("img")
-      let chooseColor = ''
-      let chooseStorage = ''
-      let chooseNet = ''
-      
+      let img = document.getElementById("img");
+      let btnColors = document.querySelectorAll(".color");
+      let btnStorage = document.querySelectorAll(".storage");
+      let btnNet = document.querySelectorAll(".net");
+
+      // 創三個 位置來放取選擇
+      let chooseColor = "";
+      let chooseStorage = "";
+      let chooseNet = "";
 
       let ipadArray = [];
+      let ipadSpecArray = [];
       // 創一個空的 XML
       let xhr = new XMLHttpRequest();
       //   let br = document.createElement("br");
-      window.onload=function(){
-        requestIpadJson(url)
-      }
+      window.onload = function () {
+        btnColors.forEach((btnColor) => {
+          btnColor.addEventListener("click", function () {
+            let color = this.id;
+            let imgUrl = `../Apple/product image/${color}.png`;
+            img.setAttribute("src", imgUrl);
+            this.style.backgroundColor = "red";
+
+            btnColors.forEach((btnColor) => {
+              if (btnColor !== this) {
+                btnColor.style.backgroundColor = "";
+              }
+            });
+          });
+        });
+        requestIpadJson(url);
+        findIpad();
+        
       
+        
+
+      };
+      // 取得 JSON 資料
+
       function requestIpadJson(uri) {
         xhr.onload = function () {
           //ipadArray = JSON.parse(this.responseText);
+          // 會回傳包含20個物件的陣列
           ipadArray = this.response;
-          //console.log(ipadArray);
-          console.log(this);
+          // let query1= ipadArray.ipad.spec.filter(item => item.storage =="256GB" && item.network == "Wi-Fi")
+          // console.log(query1);
         };
-          
-          
-
         xhr.open("GET", uri);
         //設定回傳的類型
         xhr.responseType = "json";
         xhr.send();
+
+        // ipadArray.ipad.color.forEach((item) => {
+        //   console.log(item);
+        //   item.addEventListener("click",function(){
+
+        //   })
+        // });
       }
 
-      
+      function findIpad() {
+         btnStorage.forEach((storage) => {
+          console.log(storage);
+          storage.addEventListener("click", function () {
+           chooseStorage  = this.id;
+            
+
+          })
+        });
+         btnNet.forEach((net) => {
+          console.log(net);
+          net.addEventListener("click", function () {
+           chooseNet  = this.id;
+            
+
+          })
+
+        });
+        
+      }
+    
     </script>
 
     <script
