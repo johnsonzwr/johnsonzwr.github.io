@@ -179,6 +179,7 @@
                   class="form-control"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
+                  data-index=""
                 />
               </div>
 
@@ -321,8 +322,8 @@
         let data = getLocalStorage(key);
 
         let changeSchedule = editInput.value;
-
-        data[currentIndex].content = changeSchedule;
+        // console.log( editInputDate.getAttribute("data-index"));
+        data[editInputDate.getAttribute("data-index")].content = changeSchedule;
 
         setLocalStorage(key, data);
         createCalender();
@@ -335,9 +336,8 @@
 
         let data = getLocalStorage(key);
 
-        data.splice(currentIndex, 1);
+        data.splice(editInputDate.getAttribute("data-index"), 1);
 
-        
         setLocalStorage(key, data);
         createCalender();
         editModal.hide();
@@ -392,7 +392,7 @@
                   let ul = document.createElement("ul");
                   data.forEach((el, index) => {
                     let li = document.createElement("li");
-                    li.setAttribute("data-index", index);
+                    
                     li.innerText = el.content;
                     const currentDay = `${year}/${month + 1}/${day}`;
 
@@ -401,10 +401,12 @@
                       editModal.show();
                       editInputDate.value = currentDay;
 
+                      editInputDate.setAttribute("data-index", index);
                       editInput.value = li.innerText;
                       event.stopPropagation();
-                      currentIndex = index;
-                      console.log(currentIndex);
+                      // 沒有宣告 系統會自動用 var轉成全域
+                      //   currentIndex = index;
+                      //console.log(currentIndex);
                     });
                     ul.append(li);
                   });
