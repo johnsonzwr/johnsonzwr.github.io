@@ -37,11 +37,11 @@
     />
 
     <style>
-      *{
+      * {
         margin: 0;
         padding: 0;
         list-style-type: none;
-       }
+      }
       .container > .row {
         height: 100vh;
       }
@@ -50,7 +50,6 @@
       }
       /* 群組內的 Span */
       div > span {
-        
         display: flex;
         align-items: center;
         justify-content: center;
@@ -63,11 +62,10 @@
         /* 使用 rgba() 設定顏色透明度 */
       }
 
-      #queryResult{
+      #queryResult {
         max-height: 40vw;
         background-color: lightyellow;
         overflow-y: scroll;
-        
       }
 
       @media (min-width: 768px) {
@@ -75,8 +73,9 @@
         #map {
           height: 100vh;
         }
-        #queryResult{
-        max-height: 25vw;}
+        #queryResult {
+          max-height: 25vw;
+        }
       }
     </style>
   </head>
@@ -121,7 +120,7 @@
               </button>
             </div>
           </div>
-          <div id="queryResult" >
+          <div id="queryResult">
             <!-- <div class="col-12 d-flex text-center">
               <div class="col-3 p-1"><strong>拍攝日期</strong></div>
               <div class="col-3 p-1"><strong>拍攝地點</strong></div>
@@ -205,9 +204,12 @@
             })
             .catch((e) => {
               console.log(e);
+              
+              
             });
         } catch (error) {
           console.log(error);
+          
         }
       };
 
@@ -249,9 +251,9 @@
         map.setView([lat, lng], 10);
       }
 
-      function goBack(){
+      function goBack() {
         getMapData();
-        map.setView([nowLatitude,nowLongitude],13)
+        map.setView([nowLatitude, nowLongitude], 13);
       }
       // 初始化地圖
 
@@ -312,14 +314,12 @@
           });
         }
 
-        
         queryResultDom.innerHTML = str;
       }
 
-      function clickMap(lat,lng){
-
-        getMapData()
-        map.setView([lat,lng],19)
+      function clickMap(lat, lng) {
+        getMapData();
+        map.setView([lat, lng], 19);
       }
 
       function getMapData() {
@@ -331,8 +331,7 @@
             // 9999筆物件
             console.log(data);
             locationData = data.filter((item) => {
-              return parseFloat(item.Lat) !== 0 || parseFloat(item.Lng) !== 0
-              
+              return parseFloat(item.Lat) !== 0 || parseFloat(item.Lng) !== 0;
             });
             console.log(locationData);
 
@@ -362,7 +361,6 @@
       // 渲染
 
       function renderMap() {
-        
         // 目前位置
         let nowMarker = L.marker([nowLatitude, nowLongitude]);
         nowMarker.bindPopup("您目前的位置");
@@ -400,7 +398,7 @@
             if (preClickMarker) {
               preClickMarker.setIcon(greenIcon);
             }
-            
+
             // 改變 點到的 Icon 顏色
             this.setIcon(redIcon);
             //  將這一個 marker 放入 preClickMarker內
@@ -459,10 +457,11 @@
           function error() {
             output.innerHTML = "找不到您的位置~~把您放在台北車站囉";
 
-            latitude = 25.04746589149942;
-            longitude = 121.5140978247261;
+            nowLatitude = 25.04746589149942;
+            nowLongitude = 121.5140978247261;
 
             initFN();
+            map.setView([nowLatitude,nowLongitude],13)
           }
 
           output.innerHTML = "<p>Locating…</p>";
