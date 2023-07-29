@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <!-- font awesome -->
+    <script
+      src="https://kit.fontawesome.com/8e769c960a.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- plugin插件 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+    />
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+       }
+      .container > .row {
+        height: 100vh;
+      }
+      #map {
+        height: 50vh;
+      }
+      /* 群組內的 Span */
+      div > span {
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #ffffff;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(15, 18, 199, 0.8);
+        /* 使用 rgba() 設定顏色透明度 */
+      }
+
+      #queryResult{
+        max-height: 40vw;
+        background-color: lightyellow;
+        overflow-y: scroll;
+        
+      }
+
+      @media (min-width: 768px) {
+        /* 在md及以上的尺寸地圖改為視窗高度 */
+        #map {
+          height: 100vh;
+        }
+        #queryResult{
+        max-height: 25vw;}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 py-3" id="content">
+          <!-- 地圖放置 -->
+          <div id="map" class=""></div>
+        </div>
+        <div class="col-12 col-md-6 py-3">
+          <div>
+            <h2>
+              台灣重要地景影像
+              <i class="fa-solid fa-map-location-dot fa-bounce"></i>
+            </h2>
+            <p id="updateInfo"></p>
+            <p>
+              <!-- 更新地圖資料,設一個 onclick事件 -->
+              <button class="btn btn-outline-dark" onclick="renew()">
+                更新地圖資料
+              </button>
+              <button class="btn btn-outline-dark" onclick="goBack()">
+                返回目前所在位置
+              </button>
+            </p>
+            <!-- <p><button onclick="geoFindMe()">Show my location</button></p> -->
+            <div id="out"></div>
+            <div class="input-group mb-3">
+              <div class="input-group-text" id="basic-addon2">地景位置查詢</div>
+
+              <input
+                type="text"
+                class="form-control"
+                placeholder="請輸入想查詢的地點"
+                aria-label=""
+                aria-describedby="basic-addon2"
+                id="input"
+              />
+              <button type="button" class="btn btn-outline-dark" id="query">
+                查詢
+              </button>
+            </div>
+          </div>
+          <div id="queryResult" >
+            <!-- <div class="col-12 d-flex text-center">
+              <div class="col-3 p-1"><strong>拍攝日期</strong></div>
+              <div class="col-3 p-1"><strong>拍攝地點</strong></div>
+              <div class="col-2 p-1"><strong>拍攝方式</strong></div>
+              <div class="col-2 p-1"><strong>資料來源</strong></div>
+              <div class="col-2 p-1"><strong></strong></div>
+            </div>
+            <div class="col-12 d-flex">
+              <div class="col-3 p-1">2023/02/27</div>
+              <div class="col-3 p-1">新北市三芝區福德里</div>
+              <div class="col-2 p-1 text-center">空拍</div>
+              <div class="col-2 p-1 text-center">楊銘賢</div>
+              <div class="col-2 p-1 text-end">
+                <button type="button" class="btn btn-outline-dark">地圖</button>
+              </div>
+            </div>
+            <div class="col-12 d-flex text-center mt-1">
+              <p class="col-2">圖片:</p>
+
+              <img
+                class="col-10"
+                id="location"
+                src="https://photo.swcb.gov.tw/Repository/watermarker/2023/07/22/638256527863907460.jpg"
+                alt=""
+              />
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // 座標
+
+      let latitude = 0;
+      let longitude = 0;
+      let zoom = 13;
+
+      let nowLatitude = 0;
+      let nowLongitude = 0;
+
+      // 儲存 Marker 變量
+      let preClickMarker = null;
+      // LocationJson
+
+      const url =
+        "https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=hjGn8cAQohjz&IsTransData=1";
+
+      let locationData = [];
+      let map = "";
+
+      // 地圖群組物件
+      let markers = L.markerClusterGroup();
+
+      // DOM
+      const updateInfoDom = document.getElementById("updateInfo");
+      const inputDom = document.getElementById("input");
+      const queryBtn = document.getElementById("query");
+      const queryResultDom = document.getElementById("queryResult");
+      // const locationPic = document.getElementById("location");
+
+      // console.log(locationPic);
+
+      // 刷新取得使用者座標
+
+      window.onload = function () {
+        try {
+          geoFindMe()
+            .then((res) => {
+              console.log(res);
+              nowLatitude = res[0];
+              nowLongitude = res[1];
+
+              initFN();
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      // 事件
+      // input enter事件
+      inputDom.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          inputDom.innerText = "";
+          queryBtn.click();
+        }
+      });
+
+      queryBtn.addEventListener("click", function () {
+        if (inputDom == "") {
+          alert("請輸入關鍵字");
+          return;
+        } else {
+          query();
+        }
+      });
+
+      // function
+
+      function initFN() {
+        initMap();
+        getMapData();
+      }
+
+      // 更新地圖資料的 Onclick
+      function renew() {
+        getMapData();
+        if (inputDom.value != "") {
+          query();
+        }
+      }
+
+      function goMap(lat, lng) {
+        getMapData();
+        map.setView([lat, lng], 10);
+      }
+
+      function goBack(){
+        getMapData();
+        map.setView([nowLatitude,nowLongitude],13)
+      }
+      // 初始化地圖
+
+      function initMap() {
+        map = L.map("map").setView([latitude, longitude], zoom);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }).addTo(map);
+      }
+
+      // 查詢
+      function query() {
+        queryResultDom.innerHTML = "";
+
+        console.log(locationData);
+        let filterData = locationData.filter((item) => {
+          return (
+            item.County.includes(inputDom.value) ||
+            item.Town.includes(inputDom.value) ||
+            item.Vill.includes(inputDom.value)
+          );
+        });
+
+        let str = `<div class="col-12 d-flex text-center">
+                <div class="col-2 p-1"><strong>拍攝日期</strong></div>
+                <div class="col-4 p-1"><strong>拍攝地點</strong></div>
+                <div class="col-2 p-1"><strong>拍攝方式</strong></div>
+                <div class="col-2 p-1"><strong>資料來源</strong></div>
+                <div class="col-2 p-1"><strong></strong></div>
+              </div>`;
+
+        if (filterData == "") {
+          str += `<div class="col-12 d-flex text-center">
+            
+                          <div class="col-12 p-1 mt-2" style="color: red; font-size: 20px"><strong>
+                          <i class="fa-solid fa-face-frown-open 
+                          fa-spin fa-sm" style=" color: black"></i> 找不到您要的資料</strong>
+                            <i class="fa-solid fa-face-frown-open fa-spin fa-spin-reverse fa-sm" style =" color: black"></i>
+                          </div>
+                          <div class = "col4"></div>
+                          
+
+                    </div>`;
+        } else {
+          filterData.forEach((item) => {
+            str += ` <div class="col-12 d-flex text-center ">
+                <div class="col-2 p-1">${item.PhotoDate}</div>
+                <div class="col-4 p-1">${item.County}${item.Town}${item.Vill}</div>
+                <div class="col-2 p-1 text-center">${item.Note}</div>
+                <div class="col-2 p-1 text-center">${item.Source}</div>
+                <div class="col-2 p-1 text-center">
+                  <button type="button" class="btn btn-outline-dark" onclick= clickMap(${item.Lat},${item.Lng})>地圖</button>
+                </div>
+              </div>
+             `;
+          });
+        }
+
+        
+        queryResultDom.innerHTML = str;
+      }
+
+      function clickMap(lat,lng){
+
+        getMapData()
+        map.setView([lat,lng],19)
+      }
+
+      function getMapData() {
+        // 取 Json
+
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            // 9999筆物件
+            console.log(data);
+            locationData = data.filter((item) => {
+              return parseFloat(item.Lat) !== 0 || parseFloat(item.Lng) !== 0
+              
+            });
+            console.log(locationData);
+
+            //  渲染地圖
+            renderMap();
+
+            // 更新日期
+            let today = new Date();
+            let year = today.getFullYear();
+            let month = today.getMonth() + 1;
+            let date = today.getDate();
+            let hour = today.getHours();
+            let min = today.getMinutes();
+
+            month = updateInfo(month);
+            date = updateInfo(date);
+            hour = updateInfo(hour);
+            min = updateInfo(min);
+            updateInfoDom.textContent = `最後更新時間: ${year}-${month}-${date}  ${hour}:${min}`;
+          });
+      }
+
+      function updateInfo(data) {
+        let dateNum = data < 10 ? "0" + data : data;
+        return dateNum;
+      }
+      // 渲染
+
+      function renderMap() {
+        
+        // 目前位置
+        let nowMarker = L.marker([nowLatitude, nowLongitude]);
+        nowMarker.bindPopup("您目前的位置");
+        map.addLayer(nowMarker);
+
+        if (markers) {
+          markers.clearLayers();
+        }
+
+        locationData.forEach((item) => {
+          var redIcon = new L.Icon({
+            iconUrl:
+              "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
+            shadowUrl:
+              "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41],
+          });
+          var greenIcon = new L.Icon({
+            iconUrl:
+              "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
+            shadowUrl:
+              "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41],
+          });
+          var marker = L.marker([item.Lat, item.Lng], { icon: greenIcon });
+
+          marker.addEventListener("click", function () {
+            // 如果 preClickMarker 內有存東西, 則將 Icon顏色設回綠色
+            if (preClickMarker) {
+              preClickMarker.setIcon(greenIcon);
+            }
+            
+            // 改變 點到的 Icon 顏色
+            this.setIcon(redIcon);
+            //  將這一個 marker 放入 preClickMarker內
+            preClickMarker = this;
+          });
+          marker.bindPopup(
+            `
+          <div class ="col-12">
+            
+            <h5>所在城市 : ${item.County}<h5>
+                        <p>地點: ${item.Town}${item.Vill} </p>
+                        <p>資料來源 : ${item.Source}</p>
+                        
+          </div>
+          
+               <div class = >
+                 <img
+                    class="col-12"
+                    id="location"
+                    src="${item.FileName}"
+                    alt="地景圖"
+                  />
+               </div>
+           `
+          );
+
+          markers.addLayer(marker);
+        });
+        map.addLayer(markers);
+      }
+
+      // 取得使用者位置
+      function geoFindMe() {
+        return new Promise((resolve, reject) => {
+          var output = document.getElementById("out");
+
+          if (!navigator.geolocation) {
+            output.innerHTML = "<p>瀏覽器不支援歐</p>";
+            return;
+          }
+
+          function success(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
+            output.innerHTML =
+              "<p>您目前所在的緯度是:  " +
+              latitude +
+              "° <br>你目前所在的經度是:  " +
+              longitude +
+              "°</p>";
+
+            return resolve([latitude, longitude]);
+          }
+
+          function error() {
+            output.innerHTML = "找不到您的位置~~把您放在台北車站囉";
+
+            latitude = 25.04746589149942;
+            longitude = 121.5140978247261;
+
+            initFN();
+          }
+
+          output.innerHTML = "<p>Locating…</p>";
+
+          navigator.geolocation.getCurrentPosition(success, error);
+        });
+      }
+    </script>
+  </body>
+</html>
