@@ -4,12 +4,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
+    <script
+      src="https://kit.fontawesome.com/8e769c960a.js"
+      crossorigin="anonymous"
+    ></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   </head>
 
   <style>
-    i{
-        font-size: 48px;
+    
+
+    .container{
+        background-color: azure;
+        position: relative;
+    }
+    #centerPic{
+        width: 300px;
+        
+        position: absolute;
+        bottom: 80px;
+        right: 70px;
+
+
+    }
+    #centerPic img{
+        width: 100%;
+        vertical-align: top;
     }
 
     [box-id]{
@@ -24,7 +44,7 @@
     [box-id].active{
         border: solid 5px red;
         box-shadow: 0 0 20px red;
-        transition: 1s;
+        transition: 0s;
     }
 
     #msg{
@@ -47,54 +67,62 @@
   <body>
     
     <div class="container text-center">
-        <div class="row border justify-content-between">
-          <div box-id="1"  class="col-1"><img src="./SmallMaryPic/champion.png"></i></div>
-          <div box-id="2"  class="col-1"><img src="./SmallMaryPic/baseball.png"></i></div>
-          <div box-id="3"  class="col-1"><img src="./SmallMaryPic/basketball.png"></i></div>
-          <div box-id="4"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
-          <div box-id="5"  class="col-1"><img src="./SmallMaryPic/football.png"></i></div>
-          <div box-id="6"  class="col-1"><img src="./SmallMaryPic/soccer.png"></i></div>
-          <div box-id="7"  class="col-1"><img src="./SmallMaryPic/baseball.png"></i></div>
-          <div box-id="8"  class="col-1"><img src="./SmallMaryPic/basketball.png"></i></div>
-          <div box-id="9"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
-          <div box-id="10"  class="col-1"><img src="./SmallMaryPic/football.png"></i></div>
-          <div box-id="11"  class="col-1"><img src="./SmallMaryPic/soccer.png"></i></div>
-          <div box-id="12"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
+        <div class="row  justify-content-between">
+          <div box-id="1"  class="col-1 "></div>
+          <div box-id="2"  class="col-1"></div>
+          <div box-id="3"  class="col-1"></div>
+          <div box-id="4"  class="col-1"></div>
+          <div box-id="5"  class="col-1"></div>
+          <div box-id="6"  class="col-1"></div>
+          <div box-id="7"  class="col-1"></div>
+          <div box-id="8"  class="col-1"></div>
+          <div box-id="9"  class="col-1"></div>
+          <div box-id="10"  class="col-1"></div>
+          <div box-id="11"  class="col-1"></div>
+          <div box-id="12"  class="col-1"></div>
         </div>
-        <div class="row border justify-content-between">
-            <div box-id="32"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
-            <div box-id="13"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
+        <div class="row  justify-content-between">
+            <div box-id="32"  class="col-1"></div>
+            <div class="col-10"><h1>假日要幹嘛 <i class="fa-solid fa-question fa-shake"></i></h1></div>
+            <div box-id="13"  class="col-1"></div>
         </div>
-        <div class="row border justify-content-between">
-            <div box-id="31"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
-            <div box-id="14"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
+        
+        <div class="row  justify-content-between">
+            <div box-id="31"  class="col-1"></div>
+            
+            <div class="col-10">
+                <button id="startBtn">開始遊戲</button>
+            </div>
+                
+            <div box-id="14"  class="col-1"></div>
         </div>
-        <div class="row border justify-content-between">
-            <div box-id="30"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
-            <div box-id="15"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
+        <div class="row  justify-content-between">
+            <div box-id="30"  class="col-1"></div>
+            <div id="centerPic" class="col-10"><img id="pic" src="" alt="" ></div>
+            <div box-id="15"  class="col-1"></div>
+
         </div>
-        <div class="row border justify-content-between">
-            <div box-id="29"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
-            <div box-id="16"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
+        <div class="row  justify-content-between">
+            <div box-id="29"  class="col-1"></div>
+            <div id="msg" class="col-10"></div>
+            <div box-id="16"  class="col-1"></div>
         </div>
-        <div class="row border justify-content-between">
-            <div box-id="28"  class="col-1"><img src="./SmallMaryPic/champion.png"></i></div>
-            <div box-id="27"  class="col-1"><img src="./SmallMaryPic/baseball.png"></i></div>
-            <div box-id="26"  class="col-1"><img src="./SmallMaryPic/basketball.png"></i></div>
-            <div box-id="25"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
-            <div box-id="24"  class="col-1"><img src="./SmallMaryPic/football.png"></i></div>
-            <div box-id="23"  class="col-1"><img src="./SmallMaryPic/soccer.png"></i></div>
-            <div box-id="22"  class="col-1"><img src="./SmallMaryPic/baseball.png"></i></div>
-            <div box-id="21"  class="col-1"><img src="./SmallMaryPic/basketball.png"></i></div>
-            <div box-id="20"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
-            <div box-id="19"  class="col-1"><img src="./SmallMaryPic/football.png"></i></div>
-            <div box-id="18"  class="col-1"><img src="./SmallMaryPic/soccer.png"></i></div>
-            <div box-id="17"  class="col-1"><img src="./SmallMaryPic/badminton.png"></i></div>
+        <div class="row  justify-content-between">
+            <div box-id="28"  class="col-1"></div>
+            <div box-id="27"  class="col-1"></div>
+            <div box-id="26"  class="col-1"></div>
+            <div box-id="25"  class="col-1"></div>
+            <div box-id="24"  class="col-1"></div>
+            <div box-id="23"  class="col-1"></div>
+            <div box-id="22"  class="col-1"></div>
+            <div box-id="21"  class="col-1"></div>
+            <div box-id="20"  class="col-1"></div>
+            <div box-id="19"  class="col-1"></div>
+            <div box-id="18"  class="col-1"></div>
+            <div box-id="17"  class="col-1"></div>
           </div>
           
-          <div><button id="startBtn">開始遊戲</button>
-            <div id="msg">13456</div>
-        </div>
+          
           
     </div>
 
@@ -105,55 +133,357 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     <script>
-        let bricks = document.querySelectorAll("[box-id]")
-        let steps = 0; // 剩餘步數
-        let allSteps = 0 // 全部的步數
-        let currentIdx = 0 // 目前走到的格子
-        let speed ; // 速率
-        let brickData = [
+        const brickData = [
             {
                 id: '1',
-
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sleepman.png",
                 target: function(){
-                    return '獎牌'
+                    return '這一週辛苦我自己了,躺平吧'
                 }
             },
             {
                 id: '2',
+                icon:"./SmallMaryPic/baseball.png",
+                picUrl:"./SmallMaryPic/baseballman.png",
                 target: function(){
-                    return '獎牌'
+                    return '去打棒球囉'
                 }
             },
             {
                 id: '3',
+                icon:"./SmallMaryPic/soccer.png",
+                picUrl:"./SmallMaryPic/footballman.png",
                 target: function(){
-                    return '獎牌'
+                    return '去踢足球囉'
                 }
             },
             {
                 id: '4',
+                icon:"./SmallMaryPic/badminton.png",
+                picUrl:"./SmallMaryPic/sports_badminton.png",
                 target: function(){
-                    return '獎牌'
+                    return '去打羽球囉'
                 }
             },
+            {
+                id: '5',
+                icon:"./SmallMaryPic/mountain_icon.png",
+                picUrl:"./SmallMaryPic/mountainman.png",
+                target: function(){
+                    return '爬呀爬呀爬 山'
+                }
+            },
+            {
+                id: '6',
+                icon:"./SmallMaryPic/basketball.png",
+                picUrl:"./SmallMaryPic/basketball_woman.png",
+                target: function(){
+                    return '去打籃球囉'
+                }
+            },
+            {
+                id: '7',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sleepman.png",
+                target: function(){
+                    return '這一週辛苦我自己了,躺平吧'
+                }
+            },
+            {
+                id: '8',
+                icon:"./SmallMaryPic/basketball.png",
+                picUrl:"./SmallMaryPic/basketball_woman.png",
+                target: function(){
+                    return '去打籃球囉'
+                }
+            },
+            {
+                id: '9',
+                icon:"./SmallMaryPic/soccer.png",
+                picUrl:"./SmallMaryPic/footballman.png",
+                target: function(){
+                    return '去踢足球囉'
+                }
+            },
+            {
+                id: '10',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sleepman.png",
+                target: function(){
+                    return '這一週辛苦我自己了,躺平吧'
+                }
+            },
+            {
+                id: '11',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/badGuy.png",
+                target: function(){
+                    return '外面太危險了,在家休息吧'
+                }
+            },
+            {
+                id: '12',
+                icon:"./SmallMaryPic/baseball.png",
+                picUrl:"./SmallMaryPic/baseballman.png",
+
+                target: function(){
+                    return '去打棒球囉'
+                }
+            },
+            {
+                id: '13',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sleepman.png",
+                target: function(){
+                    return '這一週辛苦我自己了,躺平吧'
+                }
+            },
+            {
+                id: '14',
+                icon:"./SmallMaryPic/basketball.png",
+                picUrl:"./SmallMaryPic/basketball_woman.png",
+                target: function(){
+                    return '去打籃球囉'
+                }
+            },
+            {
+                id: '15',
+                icon:"./SmallMaryPic/soccer.png",
+                picUrl:"./SmallMaryPic/footballman.png",
+                target: function(){
+                    return '去踢足球囉'
+                }
+            },
+            {
+                id: '16',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sports_badminton.png",
+                target: function(){
+                    return '去打羽球囉'
+                }
+            },
+            {
+                id: '17',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/bigSun.png",
+                target: function(){
+                    return '太陽太大拉,別出門了'
+                }
+            },
+            {
+                id: '18',
+                icon:"./SmallMaryPic/baseball.png",
+                picUrl:"./SmallMaryPic/baseballman.png",
+
+                target: function(){
+                    return '去打棒球囉'
+                }
+            },
+            {
+                id: '19',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sleepman.png",
+                target: function(){
+                    return '這一週辛苦我自己了,躺平吧'
+                }
+            },
+            {
+                id: '20',
+                icon:"./SmallMaryPic/mountain_icon.png",
+                picUrl:"./SmallMaryPic/mountainman.png",
+                target: function(){
+                    return '爬呀爬呀爬 山'
+                }
+            },
+            {
+                id: '21',
+                icon:"./SmallMaryPic/basketball.png",
+                picUrl:"./SmallMaryPic/basketballFail.png",
+                target: function(){
+                    return '去打籃球囉,但年紀大了,投不進'
+                }
+            },
+            {
+                id: '22',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sicksleep.png",
+                target: function(){
+                    return '感覺生了一種病,叫累累病'
+                }
+            },
+            {
+                id: '23',
+                icon:"./SmallMaryPic/badminton.png",
+                picUrl:"./SmallMaryPic/sports_badminton.png",
+                target: function(){
+                    return '去打羽球囉'
+                }
+            },
+            {
+                id: '24',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sicksleep.png",
+                target: function(){
+                    return '感覺生了一種病,叫累累病'
+                }
+            },
+            {
+                id: '25',
+                icon:"./SmallMaryPic/badminton.png",
+                picUrl:"./SmallMaryPic/sports_badminton.png",
+                target: function(){
+                    return '去打羽球囉'
+                }
+            },
+            {
+                id: '26',
+                icon:"./SmallMaryPic/baseball.png",
+                picUrl:"./SmallMaryPic/baseballman.png",
+                target: function(){
+                    return '去打棒球囉'
+                }
+            },
+            {
+                id: '27',
+                icon:"./SmallMaryPic/soccer.png",
+                picUrl:"./SmallMaryPic/soccerMans.png",
+                target: function(){
+                    return '去踢足球囉,但太難湊人了,再想想'
+                }
+            },
+            {
+                id: '28',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sleepman.png",
+                target: function(){
+                    return '這一週辛苦我自己了,躺平吧'
+                }
+            },
+            {
+                id: '29',
+                icon:"./SmallMaryPic/badminton.png",
+                picUrl:"./SmallMaryPic/sports_badminton.png",
+                target: function(){
+                    return '去打羽球囉'
+                }
+            },
+            {
+                id: '30',
+                icon:"./SmallMaryPic/sleep_icon.png",
+                picUrl:"./SmallMaryPic/sicksleep.png",
+                target: function(){
+                    return '感覺生病了,叫累累病'
+                }
+            },
+            {
+                id: '31',
+                icon:"./SmallMaryPic/basketball.png",
+                picUrl:"./SmallMaryPic/basketball_woman.png",
+                target: function(){
+                    return '去打籃球囉'
+                }
+            },
+            {
+                id: '32',
+                icon:"./SmallMaryPic/soccer.png",
+                picUrl:"./SmallMaryPic/footballman.png",
+                target: function(){
+                    return '去踢足球囉'
+                }
+            }
+            
             
         ]
+        
+        
+        // Dom
+        const startBtn = document.getElementById("startBtn")
+        const msg = document.getElementById("msg") 
+        const centerPic = document.getElementById("pic")
+        // nodeList
+        let bricks = document.querySelectorAll("[box-id]")
+        // console.log(bricks);
+        
+        let steps = 0; // 剩餘步數
+        let allSteps = 0 // 全部的步數
+        let currentIdx = 0 // 目前走到的格子
+        let speed ; // 速率
+     
+        
         bricks = Array.from(bricks)
         .sort((a,b)=>{
 
             return a.getAttributeNode('box-id').value - b.getAttributeNode('box-id').value
         })
+        // console.log(bricks);
 
+        bricks.forEach((item,index)=>{
+            // console.log(item);
+            let id = index +1
+            let data = brickData.find(item => item.id == id )
+            let img = document.createElement("img")
+            img.setAttribute('src', `${data.icon}`)
+            item.appendChild(img)
+        })
+        
         
 
-        // bricks.forEach((x,index)=>{
-        //     let id = index +1
-        //     let data = brickData.find(x => x.id == id)
-        //     let answer = document.createElement("i")
-        //     answer.innerText = "ccc"
+        // 事件
+        startBtn.addEventListener("click",function(){
+            speed = 30;
+
+            let random = Math.floor(Math.random()* brickData.length)+1;
+            // 多跑幾圈到該格子
+            // console.log(random);
+            steps = random +(2 * bricks.length);
+            // console.log(steps);
+            allSteps = steps;
+            turnAround()
+            console.log(steps);
+        })
+
+       
+        // function
+
+        function turnAround(){
+
+            // 當前格子移除紅框,往前推進
+            bricks[currentIdx].classList.remove('active')
+            currentIdx++
+
+            // 當 currentIndex 超過 32時 , 讓 currentIndex 從 0 開始
+            if(currentIdx >= bricks.length) currentIdx = 0;
+
+            // 加上紅框, 使總步數 -1
+            bricks[currentIdx].classList.add('active')
+            steps--;
             
-        //     console.log(answer);
-        // })
+            // 正常速
+            // if(steps >0){
+            //     setTimeout(turnAround,speed);
+            // }
+            // else{
+            //     //跑完
+            //     let val = brickData[currentIdx].target()
+            //     msg.innerText = `假日要-> ${val} `
+            // }
+
+            // 變速
+            if(steps >0){
+                setTimeout(turnAround,speed);
+                if(steps < Math.floor((allSteps/3))){
+                    speed +=7
+                }
+            }
+
+            else{
+                //跑完
+                // let val = brickData[currentIdx].target()
+                msg.innerText = brickData[currentIdx].target()
+                centerPic.setAttribute("src",brickData[currentIdx].picUrl)
+            }
+        }
 
 
     </script>
