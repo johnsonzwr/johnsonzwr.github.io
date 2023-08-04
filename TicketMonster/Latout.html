@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+         }
+         
+        
+        .header{
+            /* background-color: black; */
+            /* display: flex; */
+            color: white;
+            /* background-color: black; */
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        a:hover{
+            color: skyblue;
+            transition: .5s;
+        }
+
+        .footer{
+            background-color: black;
+            color: white;
+            text-align: left;
+        }
+        a > div{
+            
+            margin-top: 10px;
+        }
+
+    </style>
+  </head>
+  <body>
+    
+        <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand font-weight-bolder" href="#">ticketmaster</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Concerts</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Sports</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Art & Theater</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Family</a>
+                        </li>
+                        <!-- more -->
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                        </a>
+                        <ul class="dropdown-menu bg-white ">
+                            <li><a class="dropdown-item" href="#">Deals</a></li>
+                            <li><a class="dropdown-item" href="#">Entertainment Guides</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                        
+                    </div>
+                    <div>
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Sign in</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">Sell</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">Gift Cards</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">Help</a>
+                            </li>
+                    </div>
+                    <img src="./payPal.svg" alt="">
+                </div>
+            </nav>
+       
+        <div class=" bg-dark mb-5 " >
+
+            <div class="header flex-md-column text-center  justify-content-center ">
+                <div >
+                    <h3>Let's Make Live Happen</h3>
+                    <p>Shop millions of live events and discover can't-miss concerts, games, theater and more.</p>
+                    <div class="searchLine d-inline-block bg-white mb-2">
+                        <div class=" justify-content-center row ">
+                            <!-- <div class="input-group row">
+                                <div class="input-group-prepend col-2">
+                                    <input type="text" aria-label="First name" class="form-control " placeholder="City or Zip Code">
+                                </div>
+                                <div class="input-group-prepend col-2">
+                                    <input type="text" aria-label="Last name" class="form-control " placeholder="All Dates">
+                                </div>
+                                <div class="input-group-prepend col-6">
+                                    <input type="text" class="form-control " placeholder="Recipient's username" aria-label="Recipient's username">
+                                </div>
+                                    <button class="btn btn-primary col-2 " type="button" id="button-addon2">Search</button>
+                            </div> -->
+                            <div class="col-2">
+                                <div class="input-group">
+                                  <input type="text" aria-label="First name" class="form-control " placeholder="City or Zip Code" >
+                                </div>
+                              </div>
+                              <div class="col-2">
+                                <div class="input-group">
+                                  <input type="text" aria-label="Last name" class="form-control" placeholder="All Dates">
+                                </div>
+                              </div>
+                              <div class="col-lg-8">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="Search for artists,venues,and events" aria-label="Recipient's username">
+                                  <div >
+                                    <button class="btn btn-primary btn-block" type="button" id="button-addon2">Search</button>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- test -->
+        <!-- <div class="container">
+            
+            <div class="input-group row">
+                <span class="input-group-text col-2">First and last name</span>
+                <label for="" class="col-2"><input type="text" aria-label="First name" class="form-control "></label>
+                <input type="text" aria-label="Last name" class="form-control col-8">
+                <label for="" class="col-8"></label>
+            </div>
+        </div> -->
+                            
+                
+                
+
+
+
+        <footer class="d-flex row  bg-dark p-3 mt-5 " style="color: white;font-size: 8px;">
+            <div class="footcontent d-flex justify-content-center d-inline">
+                <div class="col-2  ">
+                    <div><h6>Helpful Links</h6></div>
+                    <a href=""><div>Help/FAQ</div></a>
+                    <a href=""><div>Sell</div></a>
+                    <a href=""><div>My Account</div></a>
+                    <a href=""><div>Contact Us</div></a>
+                    <a href=""><div>Gift Cards</div></a>
+                    <a href=""><div>Refunds and Exchanges</div></a>
+                    <a href=""><div>Do Not Sell or Share My Personal Information</div></a>
+                
+                </div>
+                <div class="col-2">
+                    <div><h6>Our Network</h6></div>
+                    <a href=""><div>Live Nation</div></a>
+                    <a href=""><div>House of Blues</div></a>
+                    <a href=""><div>Front Gate Tickets</div></a>
+                    <a href=""><div>TicketWeb</div></a>
+                    <a href=""><div>universe</div></a>
+                    <a href=""><div>NFL</div></a>
+                    <a href=""><div>NBA</div></a>
+                    <a href=""><div>NHL</div></a>
+                
+                </div>
+                <div class="col-2">
+                    <div><h6>About Us</h6></div>
+                    <a href=""><div>Who We Are</div></a>
+                    <a href=""><div>Ticketmaster Blog</div></a>
+                    <a href=""><div>Ticketing Truths</div></a>
+                    <a href=""><div>Privacy Policy</div></a>
+                    <a href=""><div>Ad Choices</div></a>
+                    <a href=""><div>Careers</div></a>
+                    <a href=""><div>Ticket Your Event</div></a>
+                    <a href=""><div>Innovation</div></a>
+                
+                </div>
+                <div class="col-2">
+                    <div><h6>Friends & Partners</h6></div>
+                    <a href=""><div>PayPal</div></a>
+                    <a href=""><div>Allianz</div></a>
+                    <a href=""><div>AWS</div></a>
+                
+                
+                    <div class="">
+                        <div class="d-flex">
+                            <p class="pt-5 mr-3 ">Get Our App</p>
+                
+                            <div class="pt-5 ">
+                                <a href="">
+                                    <svg viewBox="0 0 13 16" width="15" height="15" fill="rgba(255, 255, 255, 1)"><path d="M10.41 8.703c-.018-1.969 1.584-2.927 1.658-2.972-.908-1.346-2.315-1.53-2.809-1.544-1.18-.127-2.326.72-2.928.72-.614 0-1.54-.708-2.538-.687-1.285.02-2.488.778-3.147 1.953-1.36 2.396-.345 5.918.957 7.855.653.949 1.414 2.009 2.412 1.971.976-.04 1.34-.633 2.518-.633 1.167 0 1.509.633 2.526.61 1.047-.018 1.706-.954 2.336-1.912.753-1.087 1.056-2.158 1.068-2.213-.025-.008-2.034-.788-2.053-3.148M9.49 2.415c.587-.646.988-1.523.877-2.415-.85.033-1.911.517-2.523 1.148-.542.556-1.025 1.468-.9 2.325.954.063 1.934-.424 2.546-1.058"></path></svg>
+                
+                                </a>
+                                <a href="">
+                                    <svg viewBox="0 0 48 48" width="15" height="15"><g><path fill="#4DB6AC" d="M 7.703125 4.042969 C 7.292969 4.148438 7 4.507813 7 5.121094 C 7 6.921875 7 23.914063 7 23.914063 C 7 23.914063 7 42.28125 7 43.089844 C 7 43.535156 7.195313 43.835938 7.5 43.945313 L 27.679688 23.882813 Z "></path><path fill="#DCE775" d="M 33.238281 18.359375 L 24.929688 13.5625 C 24.929688 13.5625 9.683594 4.761719 8.789063 4.242188 C 8.402344 4.019531 8.019531 3.960938 7.703125 4.042969 L 27.683594 23.882813 Z "></path><path fill="#D32F2F" d="M 8.417969 43.800781 C 8.949219 43.492188 23.699219 34.976563 33.28125 29.445313 L 27.679688 23.882813 L 7.5 43.945313 C 7.746094 44.039063 8.066406 44.003906 8.417969 43.800781 Z "></path><path fill="#FBC02D" d="M 41.398438 23.070313 C 40.601563 22.640625 33.296875 18.394531 33.296875 18.394531 L 33.238281 18.359375 L 27.679688 23.882813 L 33.28125 29.445313 C 37.714844 26.886719 41.042969 24.964844 41.339844 24.792969 C 42.285156 24.246094 42.195313 23.5 41.398438 23.070313 Z "></path></g></svg>
+                                </a>
+                            </div>
+                        </div>
+                
+                    </div>
+                
+                </div>
+            </div>
+                
+<!-- 
+            <div>
+                <a href="">ticketmaster</a>
+            </div> -->
+
+
+
+
+        </footer>
+                    
+              
+                
+        
+    
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
