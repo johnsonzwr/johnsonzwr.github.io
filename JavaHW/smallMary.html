@@ -401,6 +401,7 @@
         const startBtn = document.getElementById("startBtn")
         const msg = document.getElementById("msg") 
         const centerPic = document.getElementById("pic")
+        
         // nodeList
         let bricks = document.querySelectorAll("[box-id]")
         // console.log(bricks);
@@ -431,6 +432,8 @@
 
         // 事件
         startBtn.addEventListener("click",function(){
+            msg.innerText=""
+            centerPic.setAttribute("src", "")
             speed = 30;
 
             let random = Math.floor(Math.random()* brickData.length)+1;
