@@ -101,6 +101,7 @@
             text-decoration: none;
         }
 
+
         /* -------------------------------------------------------- */
         .loadbtn {
             transition: .5s;
@@ -282,14 +283,15 @@
 
             .footericon {
                 position: absolute;
-                top: 15%;
-                right: -50%;
-                margin-top: 10px;
-                display: block;
+                top: 30%;
+                right: 0%;
+                margin-top: 0px;
+                display: inline;
+                width: 25%;
             }
 
             .fa-earth-asia {
-                display: inline;
+                display: none;
                 position: absolute;
                 top: 60%;
             }
@@ -309,7 +311,7 @@
     <header>
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">TicketMonster</a>
+                <a class="navbar-brand " href="#">TicketMonster</a>
                 <!-- 搜尋 -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                     aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -318,7 +320,7 @@
                 <div class=" collapse navbar-collapse bg-md-transparent  " id="mainNavbar">
                     <form class="inputform d-flex pt-2 " role="search">
                         <div><i class="fa-solid fa-magnifying-glass"></i></div>
-                        <!-- !長度控制不佳 -->
+                        <!-- ! input長度控制不佳 -->
                         <input class="form-control   " type="search" placeholder="Find millions of live experiences"
                             aria-label="search">
                     </form>
@@ -366,10 +368,10 @@
             </div>
         </nav>
 
-        <div class="container ">
+        <div class="container mt-3 ">
             <div class="row ">
                 <div class="text-white col-9 mt-lg-5">
-                    <span class="fs-6"><a href="" class="text-white text-decoration-none">Home</a>/Sports Tickets</span>
+
                     <h2>Sport Tickets</h2>
                 </div>
             </div>
@@ -377,7 +379,7 @@
 
     </header>
 
-    <div class="container">
+    <div class="container mt-lg-5">
         <div class="row mt-3">
             <div class="sportList col-lg-9  col-12 ">
                 <div>
@@ -387,7 +389,7 @@
                 <!-- 3 options -->
                 <div class="row">
                     <div class="col-lg-4 col-12 col-md-3 d-flex">
-                        <select class="form-select form-control " aria-label="Select Your Gene">
+                        <select class="form-select form-control  " aria-label="Select Your Gene">
                             <option hidden>Select Your Gene</option>
                             <option value="1">All Sports Events</option>
                             <option value="2">Aquatics</option>
@@ -513,7 +515,7 @@
                                 <!-- See ticket 按鈕 -->
 
                                 <div class="col-12 col-md-2 ">
-                                    <a href="" class="btn bg-primary text-white">See Tickets</a>
+                                    <a href="" class="seeticket btn bg-primary text-white">See Tickets</a>
                                 </div>
 
                             </div>
@@ -1255,22 +1257,22 @@
                     </a></div>
 
                 <!-- ! 長度出問題,待調 -->
-                <!-- <div class="row col-10 mx-auto d-flex">
+                <div class="row col-10 mx-auto d-flex">
                     <div class="fa-solid fa-earth-asia">
                         Tawian
                     </div>
-                </div> -->
-                <!-- <div class="footericon col-9 mx-auto mb-3">
+                </div>
+                <div class="footericon col-9 mx-auto mb-3">
                     <i class="fa-brands fa-facebook-f me-3"></i>
                     <i class="fa-brands fa-instagram me-3"></i>
                     <i class="fa-brands fa-twitter me-3"></i>
                     <i class="fa-brands fa-youtube me-3"></i>
                     <i class="fa-brands fa-linkedin-in me-3"></i>
-                </div> -->
+                </div>
             </div>
         </div>
         <!-- footer span -->
-    
+
     </div>
 
 
