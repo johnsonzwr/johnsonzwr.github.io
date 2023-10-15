@@ -25,7 +25,7 @@
       padding: 10px;
       margin: auto;
       text-align: center;
-      background-color: skyblue;
+      /* background-color: skyblue; */
       justify-content: center;
     }
 
@@ -43,7 +43,7 @@
 
     #historyList li {
       display: flex;
-      color: white;
+      color: black;
 
       margin: 10px 0;
       gap: 10px;
@@ -56,11 +56,11 @@
     }
 
     #historyPad {
-      width: 300px;
+      width: 400px;
       margin: auto;
-
-      background-color: lightslategray;
-      color: wheat;
+      height: 300px;
+      /* background-color: rgb(204, 229, 213); */
+      color: black;
     }
 
     button {
@@ -95,9 +95,9 @@
       <button id="reset">重新開始</button>
       <button id="lookAnswer">看答案</button>
     </div>
-    <div id="historyPad">
+    <div id="historyPad" class="mt-3 mb-3 pt-3 bg-body-tertiary bg-gradient shadow border rounded-4">
       <h3>答題歷程</h3>
-      <ul id="historyList"></ul>
+      <ul id="historyList" ></ul>
     </div>
     <input type="text" id="guessInput" placeholder="請輸入數字,範圍為0~9" maxlength="4" />
     <button id="guess">猜</button>
@@ -210,7 +210,7 @@
     //  重新遊戲
     function resetGame() {
       answer = generateAnswer();
-
+      gameStart()
       historyList.innerHTML = "";
     }
 
