@@ -1,126 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-      }
-      .container{
-        width: 50%;
-        margin: auto;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container mt-3">
-      <h1>代辦事項</h1>
-      <div >
-        <div class="input-group mb-3 col-md-8 ">
-          <input
-            type="text"
-            class="form-control col-md-6"
-            placeholder="todo...."
-            aria-label="Recipient's username"
-            aria-describedby="button-addon2"
-            id="mainInput"
-            value=""
-            style="border: 3px solid gray"
-          />
-          <button
-            class="btn btn-outline-secondary "
-            type="button"
-            id="createBtn"
-          >
-            新增
-          </button>
-        </div>
 
-        <div class="todoArea row">
-          <ul class="todoTable"></ul>
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .container {
+      width: 50%;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-3">
+    <h1>代辦事項</h1>
+    <div>
+      <div class="input-group mb-3 col-md-8 ">
+        <input type="text" class="form-control col-md-6" placeholder="todo...." aria-label="Recipient's username"
+          aria-describedby="button-addon2" id="mainInput" value="" style="border: 3px solid gray" />
+        <button class="btn btn-outline-secondary " type="button" id="createBtn">
+          新增
+        </button>
+      </div>
+
+      <div class="todoArea row">
+        <ul class="todoTable"></ul>
       </div>
     </div>
+  </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
 
-    <script>
-      // DOM
-      const inputMainDom = document.getElementById("mainInput");
-      const createBtnDom = document.querySelector("#createBtn");
-      const todoListDom = document.querySelector(".todoTable");
-      const todoAreaDom = document.querySelector(".todoArea");
+  <script>
+    // DOM
+    const inputMainDom = document.getElementById("mainInput");
+    const createBtnDom = document.querySelector("#createBtn");
+    const todoListDom = document.querySelector(".todoTable");
+    const todoAreaDom = document.querySelector(".todoArea");
 
-      const key = "task";
-      window.onload = function () {
-        renderPage();
+    const key = "task";
+    window.onload = function () {
+      renderPage();
+    };
+
+    inputMainDom.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        createBtnDom.click();
+      }
+    });
+    // 事件
+    createBtnDom.addEventListener("click", function () {
+      let dataArray = [];
+      let value = inputMainDom.value.trim();
+      let todoObj = {
+        content: value,
+        checked: false,
       };
+      let data = getLocalStorage(key);
 
-      inputMainDom.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-          createBtnDom.click();
-        }
-      });
-      // 事件
-      createBtnDom.addEventListener("click", function () {
-        let dataArray = [];
-        let value = inputMainDom.value.trim();
-        let todoObj = {
-          content: value,
-          checked: false,
-        };
-        let data = getLocalStorage(key);
+      if (value === "") {
+        alert("請輸入正確格式");
+        return;
+      }
 
-        if (value === "") {
-          alert("請輸入正確格式");
-          return;
-        }
+      if (data === null) {
+        dataArray.push(todoObj);
+      } else {
+        dataArray = data;
+        dataArray.push(todoObj);
+      }
 
-        if (data === null) {
-          dataArray.push(todoObj);
-        } else {
-          dataArray = data;
-          dataArray.push(todoObj);
-        }
+      createTodo(
+        dataArray[dataArray.length - 1].content,
+        dataArray.length - 1,
+        dataArray[dataArray.length - 1].checked
+      );
 
-        createTodo(
-          dataArray[dataArray.length - 1].content,
-          dataArray.length - 1,
-          dataArray[dataArray.length-1].checked
-        );
+      setLocalStorage(key, dataArray);
 
-        setLocalStorage(key, dataArray);
+      inputMainDom.value = "";
+    });
 
-        inputMainDom.value = "";
-      });
+    // Function
 
-      // Function
+    function createTodo(text, index, checked) {
+      let li = document.createElement("li");
 
-      function createTodo(text, index, checked) {
-        let li = document.createElement("li");
-
-        li.innerHTML = `<div class="form-check">
-            <input class="form-check-input col-md-4 " type="checkbox"   id="checkbox${index}" style ="border: 1px solid red" checked:${checked}
+      li.innerHTML = `<div class="form-check">
+            <input class="form-check-input col-md-1 " type="checkbox"   id="checkbox${index}" style ="border: 1px solid red" checked:${checked}
             
             >
-            <label class="form-check-label" for="checkbox${index} col-md-4">
+            <label class="form-check-label col-md-9" for="checkbox${index} ">
             <input
               type="text"
-              class="form-control col-md-8    "
+              class="form-control    "
               value = "${text}"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
@@ -129,7 +114,7 @@
             />
             </label>
             <button
-            class="btn btn-outline-secondary editBtn col-5 col-md-1 "
+            class="btn btn-outline-secondary editBtn col-2 col-md-1 "
             type="button"
             id="editBtn${index}"
             style= "background-color: orange; color: white"
@@ -138,7 +123,7 @@
           </button>
           
           <button
-            class="btn btn-outline-secondary deleteBtn col-5  col-md-1 "
+            class="btn btn-outline-secondary deleteBtn col-2  col-md-1 "
             type="button"
             id="deleteBtn${index}"
             style= "background-color: red; color: white"
@@ -147,87 +132,88 @@
           </button>
           </div>`;
 
-        // checkBox
-        let checkBox = li.querySelector(`#checkbox${index}`);
-        let liInputDom = li.querySelector(".form-control");
-        // console.log(inputDom);
-        checkBox.addEventListener("click", function () {
-          let dataArr = getLocalStorage(key);
-          dataArr[index].checked = checkBox.checked;
-
-          setLocalStorage(key, dataArr);
-          renderPage()
-        });
-
-        // enter 輸入
-        liInputDom.addEventListener("keypress", function (event) {
-          if (event.key === "Enter") {
-            editBtn.click();
-          }
-        });
-        // input
-        let editBtn = li.querySelector(`#editBtn${index}`);
-        let deleteBtn = li.querySelector(`#deleteBtn${index}`);
-
-        editBtn.addEventListener("click", function () {
-          let dataArr = getLocalStorage(key);
-          if (editBtn.innerText === "編輯") {
-            liInputDom.disabled = false;
-            editBtn.innerText = "保存";
-            editBtn.setAttribute("style", "background-color: lightgreen");
-          } else {
-            liInputDom.disabled = true;
-            dataArr[index].content = liInputDom.value;
-            setLocalStorage(key, dataArr);
-            editBtn.innerText = "編輯";
-            editBtn.setAttribute("style", "background-color: orange  ");
-          }
-        });
-
-        deleteBtn.addEventListener("click", function () {
-          let dataArr = getLocalStorage(key);
-          console.log(dataArr);
-          dataArr.splice(index, 1);
-          // li.remove();
-          console.log(index);
-          setLocalStorage(key, dataArr);
-          renderPage();
-        });
-
-        todoListDom.append(li);
-        todoAreaDom.append(todoListDom);
-      }
-
-      // 渲染畫面
-      function renderPage() {
-        todoListDom.innerHTML = "";
-
+      // checkBox
+      let checkBox = li.querySelector(`#checkbox${index}`);
+      let liInputDom = li.querySelector(".form-control");
+      // console.log(inputDom);
+      checkBox.addEventListener("click", function () {
         let dataArr = getLocalStorage(key);
-        // console.log(dataArr);
-        if (dataArr !== null) {
-          dataArr.forEach((item, index) => {
-            createTodo(item.content, index, item.checked);
-            // 取得 每一個 checkBox的 Dom元素
-            let checkbox = document.getElementById(`checkbox${index}`);
-            
-            checkbox.checked = item.checked;
-            console.log(checkbox);
-          });
+        dataArr[index].checked = checkBox.checked;
+
+        setLocalStorage(key, dataArr);
+        renderPage()
+      });
+
+      // enter 輸入
+      liInputDom.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          editBtn.click();
         }
-      }
+      });
+      // input
+      let editBtn = li.querySelector(`#editBtn${index}`);
+      let deleteBtn = li.querySelector(`#deleteBtn${index}`);
 
-      // 設定 lOCAL
-      function setLocalStorage(key, value) {
-        // 用字串才能存入
-        localStorage.setItem(key, JSON.stringify(value));
-      }
+      editBtn.addEventListener("click", function () {
+        let dataArr = getLocalStorage(key);
+        if (editBtn.innerText === "編輯") {
+          liInputDom.disabled = false;
+          editBtn.innerText = "保存";
+          editBtn.setAttribute("style", "background-color: lightgreen");
+        } else {
+          liInputDom.disabled = true;
+          dataArr[index].content = liInputDom.value;
+          setLocalStorage(key, dataArr);
+          editBtn.innerText = "編輯";
+          editBtn.setAttribute("style", "background-color: orange  ");
+        }
+      });
 
-      // 讀取 local
-      function getLocalStorage(key) {
-        // 將字串轉回原本格式
-        let data = JSON.parse(localStorage.getItem(key));
-        return data;
+      deleteBtn.addEventListener("click", function () {
+        let dataArr = getLocalStorage(key);
+        console.log(dataArr);
+        dataArr.splice(index, 1);
+        // li.remove();
+        console.log(index);
+        setLocalStorage(key, dataArr);
+        renderPage();
+      });
+
+      todoListDom.append(li);
+      todoAreaDom.append(todoListDom);
+    }
+
+    // 渲染畫面
+    function renderPage() {
+      todoListDom.innerHTML = "";
+
+      let dataArr = getLocalStorage(key);
+      // console.log(dataArr);
+      if (dataArr !== null) {
+        dataArr.forEach((item, index) => {
+          createTodo(item.content, index, item.checked);
+          // 取得 每一個 checkBox的 Dom元素
+          let checkbox = document.getElementById(`checkbox${index}`);
+
+          checkbox.checked = item.checked;
+          console.log(checkbox);
+        });
       }
-    </script>
-  </body>
+    }
+
+    // 設定 lOCAL
+    function setLocalStorage(key, value) {
+      // 用字串才能存入
+      localStorage.setItem(key, JSON.stringify(value));
+    }
+
+    // 讀取 local
+    function getLocalStorage(key) {
+      // 將字串轉回原本格式
+      let data = JSON.parse(localStorage.getItem(key));
+      return data;
+    }
+  </script>
+</body>
+
 </html>
